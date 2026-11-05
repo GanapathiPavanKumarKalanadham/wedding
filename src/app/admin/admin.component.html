@@ -1,0 +1,124 @@
+<div class="admin-shell">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">🪔</span>
+      <span>Vivaha Vedika · Admin</span>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="previewWebsite()">View Website →</button>
+  </header>
+
+  <main class="page-wrap">
+    <section class="panel">
+      <div class="section-head">
+        <h3>1. Theme & Language</h3>
+      </div>
+
+      <div class="theme-grid">
+        <button
+          *ngFor="let theme of themeOptions"
+          type="button"
+          class="theme-card"
+          [class.is-active]="data.theme === theme.key"
+          (click)="setTheme(theme.key)"
+        >
+          <span class="emoji">{{ theme.icon }}</span>
+          <span class="title">{{ theme.display }}</span>
+        </button>
+      </div>
+
+      <div class="field" style="margin-top: 18px; max-width: 360px;">
+        <label>Website language</label>
+        <select [ngModel]="data.language" (ngModelChange)="setLanguage($event)">
+          <option value="te">తెలుగు</option>
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="ta">தமிழ்</option>
+          <option value="kn">ಕನ್ನಡ</option>
+          <option value="ml">മലയാളം</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h3>2. Couple & Family Details</h3>
+      </div>
+
+      <div class="grid-3">
+        <div class="field">
+          <label>Bride name</label>
+          <input [ngModel]="data.bride" (ngModelChange)="updateField('bride', $event)" />
+        </div>
+        <div class="field">
+          <label>Groom name</label>
+          <input [ngModel]="data.groom" (ngModelChange)="updateField('groom', $event)" />
+        </div>
+        <div class="field">
+          <label>Bride family</label>
+          <input [ngModel]="data.brideFamily" (ngModelChange)="updateField('brideFamily', $event)" />
+        </div>
+        <div class="field">
+          <label>Groom family</label>
+          <input [ngModel]="data.groomFamily" (ngModelChange)="updateField('groomFamily', $event)" />
+        </div>
+        <div class="field" style="grid-column: 1 / -1;">
+          <label>Custom invitation message</label>
+          <textarea rows="3" [ngModel]="data.message" (ngModelChange)="updateField('message', $event)"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h3>3. Venue</h3>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>Venue address</label>
+          <input [ngModel]="data.venue" (ngModelChange)="updateField('venue', $event)" />
+        </div>
+        <div class="field">
+          <label>Google Maps link</label>
+          <input [ngModel]="data.mapUrl" (ngModelChange)="updateField('mapUrl', $event)" />
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h3>4. Events</h3>
+        <button class="btn btn-primary" type="button" (click)="addEvent()">+ Add event</button>
+      </div>
+
+      <div class="event-list">
+        <div *ngFor="let event of data.events; let i = index" class="event-row">
+          <input [ngModel]="event.name" (ngModelChange)="updateEvent(i, 'name', $event)" placeholder="Event name" />
+          <input type="date" [ngModel]="event.date" (ngModelChange)="updateEvent(i, 'date', $event)" />
+          <input type="time" [ngModel]="event.time" (ngModelChange)="updateEvent(i, 'time', $event)" />
+          <input [ngModel]="event.venue" (ngModelChange)="updateEvent(i, 'venue', $event)" placeholder="Venue / place" />
+          <button class="btn btn-danger delete-btn" type="button" (click)="removeEvent(i)">✕</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h3>5. Photos</h3>
+      </div>
+
+      <input id="photoUpload" type="file" accept="image/*" multiple (change)="handlePhotoUpload($event)" />
+
+      <div class="photo-grid" *ngIf="data.gallery.length; else emptyGallery">
+        <div *ngFor="let photo of data.gallery; let i = index" class="photo-tile">
+          <img [src]="photo" [alt]="'Wedding photo ' + (i + 1)" />
+          <button type="button" class="remove-photo" (click)="removePhoto(i)">×</button>
+        </div>
+      </div>
+
+      <ng-template #emptyGallery>
+        <div class="empty-state">No photos added yet. Upload your wedding card or family gallery images.</div>
+      </ng-template>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,277 @@
+<div class="site" [ngStyle]="getThemeStyles()">
+  <!-- Page borders: floral pillars -->
+  <div class="page-border left" aria-hidden="true">
+    <img src="assets/wedding/27e89c22b3d5e84c4602802add644db8.png" alt="" />
+  </div>
+  <div class="page-border right" aria-hidden="true">
+    <img src="assets/wedding/27e89c22b3d5e84c4602802add644db8.png" alt="" />
+  </div>
+
+  <!-- Thoranalu -->
+  <div class="thoranalu" aria-hidden="true">
+    <svg viewBox="0 0 1200 78" preserveAspectRatio="none">
+      <path d="M0,30 Q150,10 300,30 T600,30 T900,30 T1200,30" fill="none" stroke="#2f5a28" stroke-width="3.5"/>
+      <g *ngFor="let i of [40,90,140,190,240,290,340,390,440,490,540,590,640,690,740,790,840,890,940,990,1040,1090,1140]">
+        <ellipse [attr.cx]="i" cy="46" rx="18" ry="24" fill="#3f7a32"/>
+        <ellipse [attr.cx]="i - 12" cy="42" rx="15" ry="20" fill="#5a9a42"/>
+        <ellipse [attr.cx]="i + 12" cy="44" rx="15" ry="20" fill="#2f6b28"/>
+        <circle [attr.cx]="i" cy="18" r="5.5" fill="#e0a820"/>
+        <circle [attr.cx]="i" cy="18" r="2.5" fill="#f5d56a"/>
+      </g>
+    </svg>
+  </div>
+
+  <section class="site-hero">
+    <div class="gopuram-bg" aria-hidden="true">
+      <img src="assets/wedding/22b7f35e2d8affe83b21551f3c9e6bd5.png" alt="" />
+    </div>
+
+    <div class="hanging-lamps left" aria-hidden="true">
+      <div class="lamp-drop"><span class="chain"></span><span class="diya"><span class="flame"></span></span></div>
+      <div class="lamp-drop short"><span class="chain"></span><span class="diya"><span class="flame"></span></span></div>
+    </div>
+    <div class="hanging-lamps right" aria-hidden="true">
+      <div class="lamp-drop short"><span class="chain"></span><span class="diya"><span class="flame"></span></span></div>
+      <div class="lamp-drop"><span class="chain"></span><span class="diya"><span class="flame"></span></span></div>
+    </div>
+
+    <div class="side-decor left" aria-hidden="true">
+      <img src="assets/wedding/a50bcfdf8bcc7d541ab11e38871582e2.jpg" class="banana-img" alt="" />
+    </div>
+    <div class="side-decor right" aria-hidden="true">
+      <img src="assets/wedding/a50bcfdf8bcc7d541ab11e38871582e2.jpg" class="banana-img flip" alt="" />
+    </div>
+
+    <div class="site-hero-inner">
+      <div class="ganesha-mark" aria-hidden="true">ॐ</div>
+      <div class="sacred-tag">{{ getSacredText() }}</div>
+
+      <div class="hero-layout">
+        <div class="couple-art">
+          <img src="assets/wedding/58324f2c1f53302bdc2aba20f7c38a94.png" alt="Wedding invitation art" class="couple-main" />
+          <div class="art-glow"></div>
+        </div>
+
+        <div class="invite-copy">
+          <p class="family-line">{{ text.together }}</p>
+          <h1>
+            <span class="bride-name">{{ data.bride }}</span>
+            <span class="and">&</span>
+            <span class="groom-name">{{ data.groom }}</span>
+          </h1>
+          <p class="sacred-line">{{ text.celebrate }}</p>
+
+          <div class="divider-ornament" aria-hidden="true">
+            <span></span><i></i><span></span>
+          </div>
+
+          <div class="venue-box">
+            <div class="venue-date">
+              <span class="month">{{ getEventDatePart('month') }}</span>
+              <span class="day">{{ getEventDatePart('day') }}</span>
+              <span class="year">{{ getEventDatePart('year') }}</span>
+            </div>
+            <div class="venue-time">AT {{ getEventTime() }}</div>
+          </div>
+
+          <div class="countdown-wrap">
+            <div class="count-box">
+              <strong>{{ countdown.days }}</strong>
+              <span>{{ text.d }}</span>
+            </div>
+            <div class="count-box">
+              <strong>{{ countdown.hours }}</strong>
+              <span>{{ text.h }}</span>
+            </div>
+            <div class="count-box">
+              <strong>{{ countdown.minutes }}</strong>
+              <span>{{ text.m }}</span>
+            </div>
+          </div>
+
+          <div class="bottom-address">
+            <p>{{ data.venue || '123 ANYWHERE ST., ANY CITY, ST 12345' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section intro-section">
+    <div class="section-inner story-box">
+      <div class="portrait-block mandap">
+        <img src="assets/wedding/f95e750cf119489cace76d2be46c2a8a.png" alt="Wedding invitation art" />
+      </div>
+      <div class="story-copy">
+        <p class="eyebrow">{{ text.fm }}</p>
+        <h2>{{ text.invite }}</h2>
+        <p>{{ data.message || text.msg }}</p>
+        <div class="hands-art">
+          <img src="assets/wedding/58324f2c1f53302bdc2aba20f7c38a94.png" alt="Bride and groom hands blessing" />
+        </div>
+      </div>
+      <img src="assets/wedding/27e89c22b3d5e84c4602802add644db8.png" class="story-kalash" alt="" aria-hidden="true" />
+    </div>
+  </section>
+
+  <!-- శుభ కార్యక్రమాలు — criss-cross foot walk -->
+  <section class="section events-walk-section">
+    <div class="section-inner">
+      <h2 class="section-title">{{ text.ev }}</h2>
+      <p class="section-sub">{{ text.stepsSub }}</p>
+
+      <div class="crisscross-stage">
+        <div class="walk-path" aria-hidden="true">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="zigzag-line">
+            <path d="M28 8 L62 20 L28 32 L62 44 L28 56 L62 68 L28 80" fill="none" stroke="currentColor" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.35"/>
+          </svg>
+        </div>
+
+        <div class="crisscross-feet">
+          <button
+            *ngFor="let step of journeySteps; let i = index"
+            type="button"
+            class="footprint"
+            [class.left-foot]="isLeftFoot(i)"
+            [class.right-foot]="!isLeftFoot(i)"
+            [class.lit]="i < walkedSteps"
+            [class.active]="i === activeStep && walkedSteps > 0"
+            [class.just-stepped]="isWalking && i === walkedSteps - 1"
+            [style.top]="footTop(i)"
+            [style.left]="footLeft(i)"
+            (click)="selectJourneyStep(i)"
+            [attr.aria-label]="'Step ' + (i + 1) + ': ' + step.name">
+            <svg viewBox="0 0 40 64" class="foot-svg" [class.mirror]="!isLeftFoot(i)">
+              <ellipse cx="20" cy="38" rx="12" ry="18" />
+              <circle cx="12" cy="14" r="4.2" />
+              <circle cx="18" cy="10" r="4" />
+              <circle cx="24.5" cy="10.5" r="3.6" />
+              <circle cx="29.5" cy="14" r="3.2" />
+              <circle cx="32" cy="20" r="2.8" />
+            </svg>
+            <span class="foot-num">{{ i + 1 }}</span>
+          </button>
+        </div>
+
+        <div class="event-card" [class.pulse]="isWalking">
+          <div class="vow-kicker">Step {{ activeStep + 1 }} / {{ journeySteps.length }}</div>
+          <h3>{{ currentEvent.name }}</h3>
+          <p>{{ currentEvent.note }}</p>
+          <div class="step-meta">
+            <span *ngIf="currentEvent.date">📅 {{ formatDate(currentEvent.date, currentEvent.time) }}</span>
+            <span *ngIf="currentEvent.venue">📍 {{ currentEvent.venue }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="walk-actions">
+        <button type="button" class="walk-btn" (click)="takeNextStep()" [disabled]="isWalking">
+          {{ walkedSteps >= journeySteps.length ? text.restart : text.walk }}
+        </button>
+        <div class="step-dots">
+          <span *ngFor="let step of journeySteps; let i = index" [class.done]="i < walkedSteps"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- వేదిక — peacock bride & groom cards -->
+  <section class="section venue-section">
+    <div class="section-inner">
+      <h2 class="section-title">{{ text.vn }}</h2>
+
+      <div class="couple-cards">
+        <article class="peacock-card bride-card">
+          <div class="peacock-top">
+            <img src="assets/wedding/6c5b32be0e26f39ed11273f4263f1471.png" alt="" class="peacock-img flip-x" />
+          </div>
+          <div class="card-photo">
+            <img [src]="data.brideImage || 'assets/wedding/58324f2c1f53302bdc2aba20f7c38a94.png'" [alt]="data.bride" />
+          </div>
+          <div class="card-body">
+            <span class="card-role">{{ text.bride }}</span>
+            <h3>{{ data.bride }}</h3>
+            <p>{{ data.brideFamily }}</p>
+          </div>
+        </article>
+
+        <article class="peacock-card groom-card">
+          <div class="peacock-top">
+            <img src="assets/wedding/6c5b32be0e26f39ed11273f4263f1471.png" alt="" class="peacock-img" />
+          </div>
+          <div class="card-photo">
+            <img [src]="data.groomImage || 'assets/wedding/93ce9e4dd52469f4658fff69a07194b5.png'" [alt]="data.groom" />
+          </div>
+          <div class="card-body">
+            <span class="card-role">{{ text.groom }}</span>
+            <h3>{{ data.groom }}</h3>
+            <p>{{ data.groomFamily }}</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="venue-panel">
+        <div>
+          <div class="venue-label">📍 {{ text.vn }}</div>
+          <p>{{ data.venue || 'Venue details will be shared soon.' }}</p>
+          <a *ngIf="data.mapUrl" class="nav-btn primary" [href]="data.mapUrl" target="_blank" rel="noopener">{{ text.mp }}</a>
+        </div>
+        <div class="map-box">
+          <img src="assets/wedding/22b7f35e2d8affe83b21551f3c9e6bd5.png" class="map-gopuram" alt="" aria-hidden="true" />
+          <a *ngIf="data.mapUrl; else noMap" [href]="data.mapUrl" target="_blank" rel="noopener">{{ text.mp }}</a>
+          <ng-template #noMap>
+            <span>Map link will be updated soon</span>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ఫోటోలు — Drive link only -->
+  <section class="section photos-section">
+    <div class="section-inner">
+      <h2 class="section-title">{{ text.gl }}</h2>
+      <div class="drive-panel">
+        <img src="assets/wedding/56d391e6b75faca73c9d67b5063ef94a.png" class="drive-bird" alt="" aria-hidden="true" />
+        <ng-container *ngIf="data.driveLink; else noDrive">
+          <p>Wedding memories live in our shared album.</p>
+          <a class="walk-btn" [href]="data.driveLink" target="_blank" rel="noopener">{{ text.openDrive }}</a>
+        </ng-container>
+        <ng-template #noDrive>
+          <div class="blessings">
+            <p>{{ text.no }}</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="section-title">{{ text.fm }}</h2>
+      <div class="family-grid">
+        <div class="family-box">
+          <span class="tag">Bride's Family</span>
+          <strong>{{ data.brideFamily || 'Bride family' }}</strong>
+        </div>
+        <div class="family-box">
+          <span class="tag">Groom's Family</span>
+          <strong>{{ data.groomFamily || 'Groom family' }}</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section closing-section">
+    <div class="section-inner blessings">
+      <div class="closing-lamps" aria-hidden="true">
+        <span class="mini-diya"><i></i></span>
+        <span class="mini-diya"><i></i></span>
+        <span class="mini-diya"><i></i></span>
+      </div>
+      <p>{{ data.message || text.msg }}<br /><br /><strong>{{ text.close }}</strong></p>
+    </div>
+  </section>
+
+  <div class="footer">{{ data.bride }} & {{ data.groom }} • {{ data.venue || 'Wedding Celebration' }}</div>
+</div>
