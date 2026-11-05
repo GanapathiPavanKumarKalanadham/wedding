@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Subscription, interval } from 'rxjs';
 import { WeddingData, WeddingEvent } from '../models/wedding-data.model';
 import { WeddingDataService } from '../services/wedding-data.service';
@@ -16,10 +17,16 @@ const trans = {
 
 export interface JourneyStep {
   name: string;
+  teluguName?: string;
+  subTitle?: string;
   date: string;
   time: string;
   venue: string;
-  note: string;
+  teluguVenue?: string;
+  mapUrl?: string;
+  icon?: string;
+  description?: string;
+  note?: string;
 }
 
 @Component({
@@ -31,35 +38,80 @@ export interface JourneyStep {
 })
 export class WeddingComponent implements OnInit, OnDestroy {
   data!: WeddingData;
-  text = trans.en;
+  text = trans.te;
   nextEvent: (WeddingEvent & { stamp: number }) | null = null;
-  countdown = { days: '00', hours: '00', minutes: '00' };
+  countdown = { days: '00', hours: '00', minutes: '00', seconds: '00' };
   activeStep = 0;
-  walkedSteps = 0;
+  walkedSteps = 1;
   isWalking = false;
   journeySteps: JourneyStep[] = [];
+  activeTab: 'all' | 'muhurtham' | 'rituals' = 'all';
+  showInvitationModal = false;
+  isAudioPlaying = false;
+  videoUrl: SafeResourceUrl;
+  autoPlayVideo = false;
+
+  @ViewChild('videoSection') videoSectionRef?: ElementRef;
 
   private timerSub?: Subscription;
   private walkTimer?: ReturnType<typeof setTimeout>;
 
-  private readonly defaultJourneySteps: JourneyStep[] = [
-    { name: 'Ganesh Pooja', date: '', time: '', venue: 'Home Temple', note: 'A sacred beginning with Lord Ganesha and family blessings.' },
-    { name: 'Nandi Puja', date: '', time: '', venue: 'Pooja Mandap', note: 'Invocation of blessings and auspicious energy for the families.' },
-    { name: 'Pelli Koduku / Pelli Kuthuru', date: '', time: '', venue: 'Family Home', note: 'A joyful family gathering filled with love, music, and tradition.' },
-    { name: 'Mangalaya Snanam', date: '', time: '', venue: 'Sacred Bath', note: 'Purification and spiritual preparation for the wedding ritual.' },
-    { name: 'Muhurtham', date: '', time: '', venue: 'Wedding Mandap', note: 'The sacred vow exchange and union in the presence of elders.' },
-    { name: 'Kanyadana', date: '', time: '', venue: 'Wedding Hall', note: 'The family gives away their beloved daughter with blessings and gratitude.' },
-    { name: 'Reception', date: '', time: '', venue: 'Grand Celebration', note: 'A warm celebration of love, laughter, and togetherness.' }
-  ];
+  constructor(
+    private weddingDataService: WeddingDataService,
+    private sanitizer: DomSanitizer
+  ) {
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      'https://www.youtube.com/embed/XRk7sBvrKIs?enablejsapi=1&rel=0&modestbranding=1'
+    );
+  }
 
-  constructor(private weddingDataService: WeddingDataService) {}
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(): void {
+    this.checkVideoInView();
+    this.updateVerticalScrollJourney();
+  }
+
+  private checkVideoInView(): void {
+    if (this.autoPlayVideo || !this.videoSectionRef) return;
+    const rect = this.videoSectionRef.nativeElement.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top <= windowHeight * 0.75 && rect.bottom >= windowHeight * 0.25) {
+      this.autoPlayVideo = true;
+      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+        'https://www.youtube.com/embed/XRk7sBvrKIs?autoplay=1&mute=1&enablejsapi=1&rel=0&modestbranding=1'
+      );
+    }
+  }
+
+  private updateVerticalScrollJourney(): void {
+    const stageElements = document.querySelectorAll('.vertical-stage-node');
+    if (!stageElements || stageElements.length === 0) return;
+
+    const windowCenter = window.innerHeight * 0.5;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    stageElements.forEach((el, index) => {
+      const rect = el.getBoundingClientRect();
+      const distance = Math.abs(rect.top + rect.height * 0.35 - windowCenter);
+      if (rect.top <= windowCenter + 120 && distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== this.activeStep) {
+      this.activeStep = closestIndex;
+      this.walkedSteps = closestIndex + 1;
+    }
+  }
 
   ngOnInit(): void {
     this.data = this.weddingDataService.getData();
-    this.text = trans[this.data.language] ?? trans.en;
+    this.text = trans[this.data.language] ?? trans.te;
     this.syncJourneySteps();
     this.updateCountdown();
-    this.timerSub = interval(30000).subscribe(() => this.updateCountdown());
+    this.timerSub = interval(1000).subscribe(() => this.updateCountdown());
   }
 
   ngOnDestroy(): void {
@@ -117,48 +169,49 @@ export class WeddingComponent implements OnInit, OnDestroy {
   }
 
   syncJourneySteps(): void {
-    const baseSteps = [...(this.data?.events ?? [])].map(event => ({
-      name: event.name || 'Wedding Ritual',
-      date: event.date || '',
-      time: event.time || '',
-      venue: event.venue || 'Wedding Venue',
-      note: 'A cherished family ritual celebrated with love and blessings.'
-    }));
-
-    const merged = this.defaultJourneySteps.map((step, index) => ({
-      ...step,
-      ...(baseSteps[index] ?? {})
-    }));
-
-    // Prefer user events when they provided a full custom list
-    this.journeySteps = baseSteps.length >= 7
-      ? baseSteps.slice(0, 7)
-      : [...merged.slice(0, 7)];
+    if (this.data?.events && this.data.events.length > 0) {
+      this.journeySteps = this.data.events.map(event => ({
+        name: event.name,
+        teluguName: event.teluguName,
+        subTitle: event.subTitle,
+        date: event.date,
+        time: event.time,
+        venue: event.venue,
+        teluguVenue: event.teluguVenue,
+        mapUrl: event.mapUrl,
+        icon: event.icon || '🌺',
+        description: event.description,
+        note: event.description || event.subTitle || 'శుభకార్య వేడుక'
+      }));
+    } else {
+      this.journeySteps = [];
+    }
 
     if (this.activeStep >= this.journeySteps.length) {
       this.activeStep = 0;
     }
   }
 
-  /** Criss-cross: odd steps left, even steps right */
   isLeftFoot(index: number): boolean {
     return index % 2 === 0;
   }
 
   footTop(index: number): string {
-    return `${6 + index * 12}%`;
+    const total = Math.max(1, this.journeySteps.length);
+    return `${10 + (index * (80 / total))}%`;
   }
 
   footLeft(index: number): string {
-    return this.isLeftFoot(index) ? '28%' : '62%';
+    return this.isLeftFoot(index) ? '25%' : '65%';
   }
 
   takeNextStep(): void {
     if (this.isWalking) return;
     const total = this.journeySteps.length;
+    if (total === 0) return;
 
     if (this.walkedSteps >= total) {
-      this.walkedSteps = 0;
+      this.walkedSteps = 1;
       this.activeStep = 0;
       return;
     }
@@ -170,7 +223,7 @@ export class WeddingComponent implements OnInit, OnDestroy {
     if (this.walkTimer) clearTimeout(this.walkTimer);
     this.walkTimer = setTimeout(() => {
       this.isWalking = false;
-    }, 950);
+    }, 700);
   }
 
   selectJourneyStep(index: number): void {
@@ -179,8 +232,36 @@ export class WeddingComponent implements OnInit, OnDestroy {
   }
 
   get currentEvent(): JourneyStep {
-    return this.journeySteps[Math.min(this.activeStep, this.journeySteps.length - 1)]
-      ?? this.defaultJourneySteps[0];
+    return this.journeySteps[Math.min(this.activeStep, Math.max(0, this.journeySteps.length - 1))] || {
+      name: 'కళ్యాణ మహోత్సవం',
+      teluguName: 'కళ్యాణ మహోత్సవం',
+      date: '2026-11-20',
+      time: '21:37',
+      venue: 'రాజమండ్రి',
+      teluguVenue: 'రాజమండ్రి',
+      note: 'శుభ ముహూర్తం'
+    };
+  }
+
+  toggleInvitationModal(show: boolean): void {
+    this.showInvitationModal = show;
+  }
+
+  onImageUpload(event: Event, type: 'bride' | 'groom'): void {
+    const input = event.target as HTMLInputElement;
+    if (!input.files || input.files.length === 0) return;
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      if (type === 'bride') {
+        this.weddingDataService.updateField('brideImage', result);
+      } else {
+        this.weddingDataService.updateField('groomImage', result);
+      }
+      this.data = this.weddingDataService.getData();
+    };
+    reader.readAsDataURL(file);
   }
 
   updateCountdown(): void {
@@ -190,13 +271,14 @@ export class WeddingComponent implements OnInit, OnDestroy {
         ...event,
         stamp: new Date(`${event.date}T${event.time || '00:00'}`).getTime()
       }))
-      .filter(event => event.stamp >= Date.now() - 60000)
-      .sort((a, b) => a.stamp - b.stamp)[0];
+      .sort((a, b) => a.stamp - b.stamp);
 
-    this.nextEvent = upcoming ?? null;
+    // Pick marriage or next upcoming event
+    const marriageEvent = upcoming.find(e => e.name.toLowerCase().includes('muhurtham') || e.name.toLowerCase().includes('marriage'));
+    this.nextEvent = marriageEvent ?? upcoming[0] ?? null;
 
     if (!this.nextEvent) {
-      this.countdown = { days: '00', hours: '00', minutes: '00' };
+      this.countdown = { days: '00', hours: '00', minutes: '00', seconds: '00' };
       return;
     }
 
@@ -205,11 +287,13 @@ export class WeddingComponent implements OnInit, OnDestroy {
     const days = Math.floor(totalSeconds / 86400);
     const hours = Math.floor((totalSeconds % 86400) / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = Math.floor(totalSeconds % 60);
 
     this.countdown = {
       days: String(days).padStart(2, '0'),
       hours: String(hours).padStart(2, '0'),
-      minutes: String(minutes).padStart(2, '0')
+      minutes: String(minutes).padStart(2, '0'),
+      seconds: String(seconds).padStart(2, '0')
     };
   }
 

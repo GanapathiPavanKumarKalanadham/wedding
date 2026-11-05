@@ -1,277 +1,667 @@
 <div class="site" [ngStyle]="getThemeStyles()">
-  <!-- Page borders: floral pillars -->
-  <div class="page-border left" aria-hidden="true">
-    <img src="assets/wedding/27e89c22b3d5e84c4602802add644db8.png" alt="" />
-  </div>
-  <div class="page-border right" aria-hidden="true">
-    <img src="assets/wedding/27e89c22b3d5e84c4602802add644db8.png" alt="" />
-  </div>
+  <!-- Traditional Temple Pillars on Left & Right Borders -->
+  <aside class="page-temple-pillar left" aria-hidden="true">
+    <div class="temple-pillar-sculpture">
+      <div class="pillar-crown"></div>
+      <div class="pillar-gopuram-decor"></div>
+      <div class="pillar-fluting">
+        <div class="flute-line" *ngFor="let f of [1,2,3,4,5,6]"></div>
+      </div>
+      <div class="pillar-relief"></div>
+      <div class="pillar-base"></div>
+    </div>
+  </aside>
 
-  <!-- Thoranalu -->
+  <aside class="page-temple-pillar right" aria-hidden="true">
+    <div class="temple-pillar-sculpture">
+      <div class="pillar-crown"></div>
+      <div class="pillar-gopuram-decor"></div>
+      <div class="pillar-fluting">
+        <div class="flute-line" *ngFor="let f of [1,2,3,4,5,6]"></div>
+      </div>
+      <div class="pillar-relief"></div>
+      <div class="pillar-base"></div>
+    </div>
+  </aside>
+
+  <!-- Traditional Top Thoranalu (Mango Leaves & Marigolds) -->
   <div class="thoranalu" aria-hidden="true">
-    <svg viewBox="0 0 1200 78" preserveAspectRatio="none">
-      <path d="M0,30 Q150,10 300,30 T600,30 T900,30 T1200,30" fill="none" stroke="#2f5a28" stroke-width="3.5"/>
-      <g *ngFor="let i of [40,90,140,190,240,290,340,390,440,490,540,590,640,690,740,790,840,890,940,990,1040,1090,1140]">
-        <ellipse [attr.cx]="i" cy="46" rx="18" ry="24" fill="#3f7a32"/>
-        <ellipse [attr.cx]="i - 12" cy="42" rx="15" ry="20" fill="#5a9a42"/>
-        <ellipse [attr.cx]="i + 12" cy="44" rx="15" ry="20" fill="#2f6b28"/>
-        <circle [attr.cx]="i" cy="18" r="5.5" fill="#e0a820"/>
-        <circle [attr.cx]="i" cy="18" r="2.5" fill="#f5d56a"/>
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,25 Q150,5 300,25 T600,25 T900,25 T1200,25" fill="none" stroke="#254d1e" stroke-width="4"/>
+      <g *ngFor="let i of [35,85,135,185,235,285,335,385,435,485,535,585,635,685,735,785,835,885,935,985,1035,1085,1135,1185]">
+        <ellipse [attr.cx]="i" cy="48" rx="16" ry="26" fill="#2d6e24"/>
+        <ellipse [attr.cx]="i - 10" cy="42" rx="14" ry="22" fill="#468e37"/>
+        <ellipse [attr.cx]="i + 10" cy="44" rx="14" ry="22" fill="#1e5218"/>
+        <circle [attr.cx]="i" cy="18" r="7" fill="#f59e0b"/>
+        <circle [attr.cx]="i" cy="18" r="4" fill="#fbbf24"/>
+        <circle [attr.cx]="i" cy="18" r="1.5" fill="#ffffff"/>
       </g>
     </svg>
   </div>
 
-  <section class="site-hero">
-    <div class="gopuram-bg" aria-hidden="true">
-      <img src="assets/wedding/22b7f35e2d8affe83b21551f3c9e6bd5.png" alt="" />
+  <!-- TOP TRADITIONAL BAR: Shlokam & Auspicious Words -->
+  <header class="auspicious-header">
+    <div class="auspicious-pinnacle">
+      <span class="deity-pill">🙏 శ్రీరస్తు</span>
+      <span class="deity-pill golden">శుభమస్తు</span>
+      <span class="deity-pill">అవిఘ్నమస్తు 🙏</span>
+    </div>
+    <div class="shlokam-ribbon">
+      <p class="shlokam-text">
+        "శ్రీ మొండి నాగరాజు, శ్రీమతి అమ్మాజీ గార్ల దివ్య ఆశీస్సులతో..."
+      </p>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION: WEDDING MANDAPAM ==================== -->
+  <section class="mandapam-hero">
+    <!-- Traditional Temple Gopuram Background -->
+    <div class="mandapam-backdrop" aria-hidden="true">
+      <img src="assets/wedding/gopuram-full.png" alt="Traditional Gopuram Mandapam" class="gopuram-arch" />
     </div>
 
+    <!-- Parrots & Traditional Motifs on Mandapam Hero -->
+    <div class="mandapa-parrot-decor left" aria-hidden="true">
+      <img src="assets/wedding/parrot.png" alt="" class="decor-parrot" />
+    </div>
+    <div class="mandapa-parrot-decor right" aria-hidden="true">
+      <img src="assets/wedding/parrot.png" alt="" class="decor-parrot flip" />
+    </div>
+
+    <!-- Hanging Brass Bells & Lamps -->
     <div class="hanging-lamps left" aria-hidden="true">
-      <div class="lamp-drop"><span class="chain"></span><span class="diya"><span class="flame"></span></span></div>
+      <div class="lamp-drop"><span class="chain"></span><span class="bell">🔔</span><span class="diya"><span class="flame"></span></span></div>
       <div class="lamp-drop short"><span class="chain"></span><span class="diya"><span class="flame"></span></span></div>
     </div>
     <div class="hanging-lamps right" aria-hidden="true">
       <div class="lamp-drop short"><span class="chain"></span><span class="diya"><span class="flame"></span></span></div>
-      <div class="lamp-drop"><span class="chain"></span><span class="diya"><span class="flame"></span></span></div>
+      <div class="lamp-drop"><span class="chain"></span><span class="bell">🔔</span><span class="diya"><span class="flame"></span></span></div>
     </div>
 
-    <div class="side-decor left" aria-hidden="true">
-      <img src="assets/wedding/a50bcfdf8bcc7d541ab11e38871582e2.jpg" class="banana-img" alt="" />
+    <!-- Soft Faded Banana Trees in the Background for Mandapam Depth -->
+    <div class="mandapa-pillar left-pillar" aria-hidden="true">
+      <img src="assets/wedding/banana-pillar.jpg" alt="Auspicious Faded Banana Tree" class="banana-trunk" />
     </div>
-    <div class="side-decor right" aria-hidden="true">
-      <img src="assets/wedding/a50bcfdf8bcc7d541ab11e38871582e2.jpg" class="banana-img flip" alt="" />
+    <div class="mandapa-pillar right-pillar" aria-hidden="true">
+      <img src="assets/wedding/banana-pillar.jpg" alt="Auspicious Faded Banana Tree" class="banana-trunk flip" />
     </div>
 
-    <div class="site-hero-inner">
-      <div class="ganesha-mark" aria-hidden="true">ॐ</div>
-      <div class="sacred-tag">{{ getSacredText() }}</div>
+    <!-- Auspicious Banana Trees (అరటిచెట్లు) prominently in front of the Mandapam Hero -->
+    <div class="mandapa-banana-tree left-tree" aria-hidden="true">
+      <img src="assets/wedding/banana-tree.png" alt="Auspicious Aritichettu" class="aritichetlu-img" />
+    </div>
+    <div class="mandapa-banana-tree right-tree" aria-hidden="true">
+      <img src="assets/wedding/banana-tree.png" alt="Auspicious Aritichettu" class="aritichetlu-img flip-tree" />
+    </div>
 
-      <div class="hero-layout">
-        <div class="couple-art">
-          <img src="assets/wedding/58324f2c1f53302bdc2aba20f7c38a94.png" alt="Wedding invitation art" class="couple-main" />
-          <div class="art-glow"></div>
+    <div class="mandapam-content">
+      <div class="om-ganesha-badge">
+        <span class="om-symbol">卐 ॐ 卐</span>
+      </div>
+
+      <!-- Kalyana Ahvana Patrika Heading -->
+      <div class="patrika-title-wrap">
+        <div class="kalyana-badge">కళ్యాణ ఆహ్వాన శుభపత్రిక</div>
+        <h1 class="wedding-title">మొండి వారి కళ్యాణ ఆహ్వానం</h1>
+        <p class="patrika-sub">
+          శ్రీ మొండి గంగాధర్, శ్రీమతి దుర్గాభవాని దంపతులు వ్రాయు శుభలేఖార్థములు
+        </p>
+      </div>
+
+      <!-- COUPLE SPOTLIGHT MANDAPA STAGE (CLEAN - NO BADGES) -->
+      <div class="mandapa-stage">
+        <!-- Bride Card -->
+        <div class="couple-spotlight bride-spot">
+          <div class="photo-frame ornate-gold">
+            <img [src]="data.brideImage" [alt]="data.bride" class="avatar-img" />
+            <div class="flower-garland-overlay"></div>
+          </div>
+          <div class="profile-info">
+            <span class="role-badge bride-badge">వధువు (చి॥ల॥సౌ॥)</span>
+            <h2 class="person-name">{{ data.brideTelugu }}</h2>
+            <span class="degree-tag">{{ data.brideQualification }}</span>
+            <p class="lineage-text">
+              శ్రీ మొండి గంగాధర్ & శ్రీమతి దుర్గాభవాని గార్ల <strong>ఏకైక కుమార్తె</strong>
+            </p>
+          </div>
         </div>
 
-        <div class="invite-copy">
-          <p class="family-line">{{ text.together }}</p>
-          <h1>
-            <span class="bride-name">{{ data.bride }}</span>
-            <span class="and">&</span>
-            <span class="groom-name">{{ data.groom }}</span>
-          </h1>
-          <p class="sacred-line">{{ text.celebrate }}</p>
-
-          <div class="divider-ornament" aria-hidden="true">
-            <span></span><i></i><span></span>
+        <!-- Center Sacred Knot / Mangalasutram Motif -->
+        <div class="stage-center-motif">
+          <div class="knot-circle">
+            <span class="knot-text">పరిణయం</span>
+            <span class="sacred-date">20-11-2026</span>
           </div>
+          <div class="golden-vows-tag">శుభ ముహూర్తం</div>
+        </div>
 
-          <div class="venue-box">
-            <div class="venue-date">
-              <span class="month">{{ getEventDatePart('month') }}</span>
-              <span class="day">{{ getEventDatePart('day') }}</span>
-              <span class="year">{{ getEventDatePart('year') }}</span>
-            </div>
-            <div class="venue-time">AT {{ getEventTime() }}</div>
+        <!-- Groom Card -->
+        <div class="couple-spotlight groom-spot">
+          <div class="photo-frame ornate-gold">
+            <img [src]="data.groomImage" [alt]="data.groom" class="avatar-img" />
+            <div class="flower-garland-overlay"></div>
           </div>
-
-          <div class="countdown-wrap">
-            <div class="count-box">
-              <strong>{{ countdown.days }}</strong>
-              <span>{{ text.d }}</span>
-            </div>
-            <div class="count-box">
-              <strong>{{ countdown.hours }}</strong>
-              <span>{{ text.h }}</span>
-            </div>
-            <div class="count-box">
-              <strong>{{ countdown.minutes }}</strong>
-              <span>{{ text.m }}</span>
-            </div>
-          </div>
-
-          <div class="bottom-address">
-            <p>{{ data.venue || '123 ANYWHERE ST., ANY CITY, ST 12345' }}</p>
+          <div class="profile-info">
+            <span class="role-badge groom-badge">వరుడు (చి॥)</span>
+            <h2 class="person-name">{{ data.groomTelugu }}</h2>
+            <span class="degree-tag">{{ data.groomQualification }}</span>
+            <p class="lineage-text">
+              శ్రీ ఆదిరెడ్డి నరసింహం & శ్రీమతి వెంకట గౌరి పార్వతి గార్ల <strong>ఏకైక కుమారుడు</strong>
+              <small class="village-info">(హుకుంపేట, రాజమండ్రి రూరల్, నామవరం గ్రామ వాస్తవ్యులు)</small>
+            </p>
           </div>
         </div>
+      </div>
+
+      <!-- SACRED SHLOKAM CARD -->
+      <div class="sacred-shlokam-card">
+        <p class="telugu-sloka">
+          శ్లో॥ జానక్యాః కమలామలాంజలి పుటేయాః పద్మరాగాయితాః<br>
+          న్యస్తారాఘవ మస్తకేచ విలసత్కుంద ప్రసూనాయితాః<br>
+          స్రస్తాశ్శ్యామల కాయకాంతి కలితా యా ఇంద్రనీలాయితాః<br>
+          ముక్తాస్తాః శుభదా భవంతు భవతాం శ్రీరామ వైవాహికాః
+        </p>
+      </div>
+
+      <!-- LIVE COUNTDOWN TIMER TO MUHURTHAM -->
+      <div class="countdown-mandapam">
+        <div class="timer-kicker">✨ కళ్యాణ మహోత్సవ సుముహూర్తానికి సమయం ✨</div>
+        <div class="muhurtham-clock">
+          <div class="clock-unit">
+            <span class="num">{{ countdown.days }}</span>
+            <span class="label">రోజులు</span>
+          </div>
+          <div class="clock-sep">:</div>
+          <div class="clock-unit">
+            <span class="num">{{ countdown.hours }}</span>
+            <span class="label">గంటలు</span>
+          </div>
+          <div class="clock-sep">:</div>
+          <div class="clock-unit">
+            <span class="num">{{ countdown.minutes }}</span>
+            <span class="label">నిమిషాలు</span>
+          </div>
+          <div class="clock-sep">:</div>
+          <div class="clock-unit highlight">
+            <span class="num">{{ countdown.seconds }}</span>
+            <span class="label">సెకన్లు</span>
+          </div>
+        </div>
+        <div class="exact-muhurtham-detail">
+          <strong>సుముహూర్తము:</strong> {{ data.tithiNakshatramTelugu }} — అనగా {{ data.muhurthamTimeTelugu }}
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="hero-actions">
+        <a [href]="data.mapUrl" target="_blank" rel="noopener" class="mandapa-btn primary-btn">
+          📍 కళ్యాణ వేదిక లొకేషన్ (Google Maps)
+        </a>
+        <button type="button" (click)="toggleInvitationModal(true)" class="mandapa-btn card-btn">
+          📜 అసలైన ఆహ్వాన పత్రిక చూడండి (View Card)
+        </button>
       </div>
     </div>
   </section>
 
-  <section class="section intro-section">
-    <div class="section-inner story-box">
-      <div class="portrait-block mandap">
-        <img src="assets/wedding/f95e750cf119489cace76d2be46c2a8a.png" alt="Wedding invitation art" />
-      </div>
-      <div class="story-copy">
-        <p class="eyebrow">{{ text.fm }}</p>
-        <h2>{{ text.invite }}</h2>
-        <p>{{ data.message || text.msg }}</p>
-        <div class="hands-art">
-          <img src="assets/wedding/58324f2c1f53302bdc2aba20f7c38a94.png" alt="Bride and groom hands blessing" />
-        </div>
-      </div>
-      <img src="assets/wedding/27e89c22b3d5e84c4602802add644db8.png" class="story-kalash" alt="" aria-hidden="true" />
-    </div>
-  </section>
-
-  <!-- శుభ కార్యక్రమాలు — criss-cross foot walk -->
-  <section class="section events-walk-section">
+  <!-- ==================== SPECIAL WEDDING VIDEO (AUTOPLAY ON SCROLL) ==================== -->
+  <section class="section couple-video-section" #videoSection>
     <div class="section-inner">
-      <h2 class="section-title">{{ text.ev }}</h2>
-      <p class="section-sub">{{ text.stepsSub }}</p>
+      <div class="section-header-mandapa">
+        <span class="header-sub">మధుర స్మృతులు</span>
+        <h2 class="section-main-title">వధూవరుల పరిచయ వేడుక వీడియో (Couple Special Moments)</h2>
+        <div class="ornament-line">🎥 ❖ 💑</div>
+      </div>
 
-      <div class="crisscross-stage">
-        <div class="walk-path" aria-hidden="true">
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="zigzag-line">
-            <path d="M28 8 L62 20 L28 32 L62 44 L28 56 L62 68 L28 80" fill="none" stroke="currentColor" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.35"/>
-          </svg>
+      <div class="video-theatre-card">
+        <div class="video-frame-wrapper">
+          <iframe
+            [src]="videoUrl"
+            title="Divya & Pavan Kumar Wedding Moments"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            class="couple-youtube-player">
+          </iframe>
+        </div>
+        <div class="video-caption-bar">
+          <span class="video-tag">✨ Divya & Pavan Kumar Love & Wedding Highlights</span>
+          <a href="https://youtu.be/XRk7sBvrKIs" target="_blank" rel="noopener" class="youtube-direct-link">
+            YouTube లో చూడండి ➔
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TELUGU TRADITIONAL RITUALS (PREMIUM VERTICAL JOURNEY WITH FOOTSTEPS) ==================== -->
+  <section class="section rituals-interactive-section rituals-vertical-journey-section" id="rituals-stage">
+    <div class="section-inner">
+      <div class="section-header-mandapa">
+        <span class="header-sub">తెలుగు సంప్రదాయ మహోత్సవ నడక</span>
+        <h2 class="section-main-title">ఏడడుగులు — శుభ కార్యక్రమాల ప్రయాణం</h2>
+        <div class="ornament-line">✦ 🪔 ✦</div>
+        <p class="section-description">
+          కిందికి స్క్రోల్ చేస్తూ నవదంపతుల కళ్యాణ ఘట్టాలలో పవిత్రంగా అడుగులు వేయండి. ప్రతి అడుగూ ఒక మంగళప్రదమైన వేడుకకు దారి చూపుతుంది.
+        </p>
+      </div>
+
+      <!-- VERTICAL WEDDING JOURNEY CONTAINER -->
+      <div class="vertical-journey-container">
+        <!-- Vertical Golden Sacred Path Axis -->
+        <div class="journey-vertical-axis" aria-hidden="true">
+          <div class="axis-line"></div>
+          <div class="floating-flower-petals">
+            <span class="petal p1">🌸</span>
+            <span class="petal p2">🌼</span>
+            <span class="petal p3">🌸</span>
+            <span class="petal p4">🌼</span>
+          </div>
         </div>
 
-        <div class="crisscross-feet">
-          <button
+        <!-- SEQUENTIAL STAGE NODES (ARRANGED VERTICALLY) -->
+        <div class="vertical-stages-list">
+          <div
             *ngFor="let step of journeySteps; let i = index"
-            type="button"
-            class="footprint"
-            [class.left-foot]="isLeftFoot(i)"
-            [class.right-foot]="!isLeftFoot(i)"
-            [class.lit]="i < walkedSteps"
-            [class.active]="i === activeStep && walkedSteps > 0"
-            [class.just-stepped]="isWalking && i === walkedSteps - 1"
-            [style.top]="footTop(i)"
-            [style.left]="footLeft(i)"
-            (click)="selectJourneyStep(i)"
-            [attr.aria-label]="'Step ' + (i + 1) + ': ' + step.name">
-            <svg viewBox="0 0 40 64" class="foot-svg" [class.mirror]="!isLeftFoot(i)">
-              <ellipse cx="20" cy="38" rx="12" ry="18" />
-              <circle cx="12" cy="14" r="4.2" />
-              <circle cx="18" cy="10" r="4" />
-              <circle cx="24.5" cy="10.5" r="3.6" />
-              <circle cx="29.5" cy="14" r="3.2" />
-              <circle cx="32" cy="20" r="2.8" />
-            </svg>
-            <span class="foot-num">{{ i + 1 }}</span>
+            class="vertical-stage-node"
+            [class.active-milestone]="i === activeStep"
+            [class.completed-milestone]="i < activeStep"
+            [class.upcoming-milestone]="i > activeStep"
+            (click)="selectJourneyStep(i)">
+
+            <!-- FOOTPRINT STEPPING PAIR (ALTERNATING LEFT & RIGHT) -->
+            <div class="node-footprint-col" aria-hidden="true">
+              <!-- Left Footprint -->
+              <div class="vertical-foot-wrap left-side" [class.step-lit]="i <= activeStep">
+                <svg viewBox="0 0 40 64" class="v-foot-svg">
+                  <ellipse cx="20" cy="38" rx="12" ry="18" />
+                  <circle cx="12" cy="14" r="4.2" />
+                  <circle cx="18" cy="10" r="4" />
+                  <circle cx="24.5" cy="10.5" r="3.6" />
+                  <circle cx="29.5" cy="14" r="3.2" />
+                  <circle cx="32" cy="20" r="2.8" />
+                </svg>
+                <span class="foot-halo"></span>
+              </div>
+
+              <!-- Milestone Sacred Center Hub -->
+              <div class="milestone-hub">
+                <div class="hub-ring">
+                  <span class="hub-icon">{{ step.icon }}</span>
+                </div>
+                <span class="hub-number">0{{ i + 1 }}</span>
+              </div>
+
+              <!-- Right Footprint -->
+              <div class="vertical-foot-wrap right-side" [class.step-lit]="i <= activeStep">
+                <svg viewBox="0 0 40 64" class="v-foot-svg mirror">
+                  <ellipse cx="20" cy="38" rx="12" ry="18" />
+                  <circle cx="12" cy="14" r="4.2" />
+                  <circle cx="18" cy="10" r="4" />
+                  <circle cx="24.5" cy="10.5" r="3.6" />
+                  <circle cx="29.5" cy="14" r="3.2" />
+                  <circle cx="32" cy="20" r="2.8" />
+                </svg>
+                <span class="foot-halo"></span>
+              </div>
+            </div>
+
+            <!-- EVENT DETAILS CARD (EXPANDS TO THE RIGHT IN DESKTOP, STACKS IN MOBILE) -->
+            <div class="node-card-col">
+              <div class="invitation-detail-card">
+                <div class="card-ornamental-corner top-left"></div>
+                <div class="card-ornamental-corner top-right"></div>
+                <div class="card-ornamental-corner bottom-left"></div>
+                <div class="card-ornamental-corner bottom-right"></div>
+
+                <div class="card-header-bar">
+                  <span class="step-tag">అడుగు 0{{ i + 1 }} / 0{{ journeySteps.length }}</span>
+                  <span class="step-status" *ngIf="i === activeStep">✨ ప్రస్తుతం వీక్షిస్తున్నారు</span>
+                  <span class="step-status done" *ngIf="i < activeStep">✓ దర్శించిన శుభకార్యం</span>
+                </div>
+
+                <div class="card-title-block">
+                  <h3 class="event-telugu-name">{{ step.teluguName }}</h3>
+                  <h4 class="event-eng-name">{{ step.name }}</h4>
+                  <div class="title-underline-ornament">✦ ❖ ✦</div>
+                </div>
+
+                <!-- Timing & Date Badges -->
+                <div class="event-meta-grid" *ngIf="step.date || step.time">
+                  <div class="meta-badge" *ngIf="step.date">
+                    <span class="badge-icon">📅</span>
+                    <span class="badge-text">{{ formatDate(step.date, step.time) }}</span>
+                  </div>
+                  <div class="meta-badge" *ngIf="step.time">
+                    <span class="badge-icon">⏰</span>
+                    <span class="badge-text">
+                      {{ step.time === '21:37' ? 'రాత్రి 09:37 ని॥లకు (సుముహూర్తం)' : (step.time === '17:00' ? 'సాయంత్రం 05:00 PMకి' : (step.time === '19:00' ? 'రాత్రి 07:00 PM నుండి' : (step.time === '10:00' ? 'ఉదయం 10:00 AM' : (step.time === '09:00' ? 'ఉదయం 09:00 AM' : step.time)))) }}
+                    </span>
+                  </div>
+                </div>
+
+                <p class="event-narrative-desc">{{ step.description }}</p>
+
+                <!-- Venue Info Box -->
+                <div class="event-venue-container" *ngIf="step.teluguVenue || step.venue">
+                  <div class="venue-line">
+                    <span class="pin-icon">📍</span>
+                    <strong class="venue-main-text">{{ step.teluguVenue || step.venue }}</strong>
+                  </div>
+                  <p class="venue-secondary-text" *ngIf="step.venue && step.venue !== step.teluguVenue">{{ step.venue }}</p>
+                </div>
+
+                <!-- Google Maps Link Button -->
+                <div class="card-action-bar" *ngIf="step.mapUrl">
+                  <a [href]="step.mapUrl" target="_blank" rel="noopener" class="journey-map-btn">
+                    <span>Google Maps లో లొకేషన్ చూడండి</span>
+                    <span class="arrow-glyph">➔</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN WEDDING VENUE & SUBHALEKHA PROMINENT DISPLAY ==================== -->
+  <section class="section grand-venue-section">
+    <div class="section-inner">
+      <div class="section-header-mandapa">
+        <span class="header-sub">కళ్యాణ వేదిక & శుభలేఖ పత్రిక</span>
+        <h2 class="section-main-title">కళ్యాణ వేదిక & అసలైన శుభలేఖ (Official Subhalekha)</h2>
+      </div>
+
+      <!-- MAIN PROMINENT INVITATION CARD (SUBHALEKHA) SHOWCASE -->
+      <div class="prominent-subhalekha-card">
+        <div class="subhalekha-header-strip">
+          <span class="seal-icon">📜</span>
+          <span class="seal-title">మొండి వారి కళ్యాణ ఆహ్వాన శుభపత్రిక — అసలైన ఆహ్వాన పత్రిక</span>
+          <button type="button" class="fullview-pill" (click)="toggleInvitationModal(true)">🔍 పూర్తి సైజులో చూడండి</button>
+        </div>
+
+        <div class="subhalekha-img-container" (click)="toggleInvitationModal(true)">
+          <img src="assets/wedding/invitation-card.jpg" alt="Vivaha Subhalekha Card" class="subhalekha-main-image" />
+          <div class="zoom-hover-overlay">
+            <span>🔍 క్లిక్ చేసి పూర్తి శుభలేఖను పెద్దదిగా చూడండి & డౌన్‌లోడ్ చేసుకోండి</span>
+          </div>
+        </div>
+
+        <div class="subhalekha-download-actions">
+          <a href="assets/wedding/invitation-card.jpg" download="Divya-PavanKumar-Subhalekha.jpg" class="download-subhalekha-btn">
+            📥 శుభలేఖ పత్రిక డౌన్‌లోడ్ చేసుకోండి (Download Subhalekha)
+          </a>
+          <button type="button" class="view-subhalekha-btn" (click)="toggleInvitationModal(true)">
+            👁️ స్క్రీన్‌పై స్పష్టంగా చదవండి (Read Card)
           </button>
         </div>
-
-        <div class="event-card" [class.pulse]="isWalking">
-          <div class="vow-kicker">Step {{ activeStep + 1 }} / {{ journeySteps.length }}</div>
-          <h3>{{ currentEvent.name }}</h3>
-          <p>{{ currentEvent.note }}</p>
-          <div class="step-meta">
-            <span *ngIf="currentEvent.date">📅 {{ formatDate(currentEvent.date, currentEvent.time) }}</span>
-            <span *ngIf="currentEvent.venue">📍 {{ currentEvent.venue }}</span>
-          </div>
-        </div>
       </div>
 
-      <div class="walk-actions">
-        <button type="button" class="walk-btn" (click)="takeNextStep()" [disabled]="isWalking">
-          {{ walkedSteps >= journeySteps.length ? text.restart : text.walk }}
-        </button>
-        <div class="step-dots">
-          <span *ngFor="let step of journeySteps; let i = index" [class.done]="i < walkedSteps"></span>
+      <!-- VENUE DETAILS WITH KALASH PLACED SAFELY DOWN BELOW -->
+      <div class="venue-showcase-card mt-30">
+        <div class="venue-info-side">
+          <div class="venue-item-badge">💒 కళ్యాణ వేదిక (Marriage Hall)</div>
+          <h3 class="hall-title">శ్రీ ఉమా రామ లింగేశ్వర ఫంక్షన్ హాల్</h3>
+          <p class="hall-address">
+            రాజమండ్రి, జాం పేట గాంధీ బొమ్మ వీధి
+          </p>
+
+          <div class="feast-box">
+            <div class="feast-heading">🍛 విందు (Wedding Dinner) :</div>
+            <p class="feast-time"><strong>ది. 20-11-2026 శుక్రవారం రాత్రి 7:00 గంటల నుండి</strong> కళ్యాణ వేదిక నందు.</p>
+          </div>
+
+          <div class="muhurtham-box">
+            <div class="muhurtham-heading">🪔 సుముహూర్తము :</div>
+            <p class="muhurtham-time">
+              స్వస్తిశ్రీ చాంద్రవ శ్రీ పరాభవ నామ సంవత్సర కార్తీక శుద్ధ ఏకాదశి<br>
+              <strong>అనగా ది. 20-11-2026 వ తేదీ శుక్రవారం రాత్రి 09:37 ని॥లకు</strong><br>
+              ఉత్తరభద్ర నక్షత్రయుక్త ధనుస్సు లగ్నమునందు.
+            </p>
+          </div>
+
+          <a [href]="data.mapUrl" target="_blank" rel="noopener" class="mandapa-btn primary-btn full-width">
+            🗺️ Google Maps లో కళ్యాణ వేదిక రూట్ చూడండి
+          </a>
+        </div>
+
+        <!-- KALASH FEATURE POSITIONED SAFELY BELOW / ON SIDE COMPACTLY -->
+        <div class="venue-visual-side down-kalash-container">
+          <img src="assets/wedding/kalash-lamps.png" alt="Auspicious Kalash and Lamps" class="kalash-feature placed-down" />
+          <div class="kalash-caption">
+            <span>✨ మంగళ కలశం • దీపారాధన శుభ దీవెనలు</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- వేదిక — peacock bride & groom cards -->
-  <section class="section venue-section">
+  <!-- ==================== RICH PHOTO GALLERY WITH STYLISH CARDS ==================== -->
+  <section class="section couple-gallery-section">
     <div class="section-inner">
-      <h2 class="section-title">{{ text.vn }}</h2>
-
-      <div class="couple-cards">
-        <article class="peacock-card bride-card">
-          <div class="peacock-top">
-            <img src="assets/wedding/6c5b32be0e26f39ed11273f4263f1471.png" alt="" class="peacock-img flip-x" />
-          </div>
-          <div class="card-photo">
-            <img [src]="data.brideImage || 'assets/wedding/58324f2c1f53302bdc2aba20f7c38a94.png'" [alt]="data.bride" />
-          </div>
-          <div class="card-body">
-            <span class="card-role">{{ text.bride }}</span>
-            <h3>{{ data.bride }}</h3>
-            <p>{{ data.brideFamily }}</p>
-          </div>
-        </article>
-
-        <article class="peacock-card groom-card">
-          <div class="peacock-top">
-            <img src="assets/wedding/6c5b32be0e26f39ed11273f4263f1471.png" alt="" class="peacock-img" />
-          </div>
-          <div class="card-photo">
-            <img [src]="data.groomImage || 'assets/wedding/93ce9e4dd52469f4658fff69a07194b5.png'" [alt]="data.groom" />
-          </div>
-          <div class="card-body">
-            <span class="card-role">{{ text.groom }}</span>
-            <h3>{{ data.groom }}</h3>
-            <p>{{ data.groomFamily }}</p>
-          </div>
-        </article>
+      <div class="section-header-mandapa">
+        <span class="header-sub">స్నేహం • ప్రేమ • పరిణయం</span>
+        <h2 class="section-main-title">వధూవరుల అందమైన చిత్రమాలిక (Photo Gallery)</h2>
+        <div class="ornament-line">✦ 🌸 ✦</div>
       </div>
 
-      <div class="venue-panel">
-        <div>
-          <div class="venue-label">📍 {{ text.vn }}</div>
-          <p>{{ data.venue || 'Venue details will be shared soon.' }}</p>
-          <a *ngIf="data.mapUrl" class="nav-btn primary" [href]="data.mapUrl" target="_blank" rel="noopener">{{ text.mp }}</a>
+      <div class="rich-masonry-gallery">
+        <div class="gallery-card featured-highlight peacock-framed-card">
+          <div class="card-peacock-crest">
+            <img src="assets/wedding/peacock.jpg" alt="Peacock Feather Motif" class="peacock-crest-img" />
+          </div>
+          <div class="image-wrapper">
+            <img src="assets/wedding/couple-telephone.jpg" alt="Couple Telephone Moment" loading="lazy" />
+            <div class="card-glass-sheen"></div>
+          </div>
+          <div class="gallery-card-footer">
+            <span class="category-tag">మధుర భావాలు</span>
+            <h4>తీపి కబుర్లు & సంతోష క్షణాలు</h4>
+          </div>
         </div>
-        <div class="map-box">
-          <img src="assets/wedding/22b7f35e2d8affe83b21551f3c9e6bd5.png" class="map-gopuram" alt="" aria-hidden="true" />
-          <a *ngIf="data.mapUrl; else noMap" [href]="data.mapUrl" target="_blank" rel="noopener">{{ text.mp }}</a>
-          <ng-template #noMap>
-            <span>Map link will be updated soon</span>
-          </ng-template>
+
+        <div class="gallery-card peacock-framed-card">
+          <div class="card-peacock-crest">
+            <img src="assets/wedding/peacock.jpg" alt="Peacock Feather Motif" class="peacock-crest-img" />
+          </div>
+          <div class="image-wrapper">
+            <img src="assets/wedding/couple-traditional.jpg" alt="Traditional Couple Pose" loading="lazy" />
+            <div class="card-glass-sheen"></div>
+          </div>
+          <div class="gallery-card-footer">
+            <span class="category-tag">తెలుగు సంప్రదాయం</span>
+            <h4>పట్టువస్త్రాల శోభలో వధూవరులు</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="image-wrapper">
+            <img src="assets/wedding/gallery-bride-trad.jpg" alt="Bride Divya in Wedding Saree" loading="lazy" />
+            <div class="card-glass-sheen"></div>
+          </div>
+          <div class="gallery-card-footer">
+            <span class="category-tag">వధువు చి॥ల॥సౌ॥ దివ్య</span>
+            <h4>మంగళకరమైన సంప్రదాయ వస్త్రాలంకరణ</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="image-wrapper">
+            <img src="assets/wedding/gallery-candid-1.jpg" alt="Couple Candid Nature" loading="lazy" />
+            <div class="card-glass-sheen"></div>
+          </div>
+          <div class="gallery-card-footer">
+            <span class="category-tag">ప్రకృతి ఒడిలో</span>
+            <h4>ఆనంద క్షణాలు</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="image-wrapper">
+            <img src="assets/wedding/gallery-trad-hands.jpg" alt="Sacred Hands Blessing" loading="lazy" />
+            <div class="card-glass-sheen"></div>
+          </div>
+          <div class="gallery-card-footer">
+            <span class="category-tag">కళ్యాణ బంధం</span>
+            <h4>ఒకటైన హస్తాలు • పవిత్ర దీవెనలు</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="image-wrapper">
+            <img src="assets/wedding/gallery-candid-2.jpg" alt="Outdoor Photoshoot" loading="lazy" />
+            <div class="card-glass-sheen"></div>
+          </div>
+          <div class="gallery-card-footer">
+            <span class="category-tag">క్యాండిడ్ మెమొరీస్</span>
+            <h4>అపురూపమైన జ్ఞాపకాలు</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="image-wrapper">
+            <img src="assets/wedding/gallery-trad-1.jpg" alt="Couple Traditional Pose 1" loading="lazy" />
+            <div class="card-glass-sheen"></div>
+          </div>
+          <div class="gallery-card-footer">
+            <span class="category-tag">శుభ సంబరం</span>
+            <h4>చిరునవ్వుల వేడుక</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="image-wrapper">
+            <img src="assets/wedding/gallery-ocean.jpg" alt="Scenic Couple Moment" loading="lazy" />
+            <div class="card-glass-sheen"></div>
+          </div>
+          <div class="gallery-card-footer">
+            <span class="category-tag">ప్రేమ తరంగాలు</span>
+            <h4>సముద్ర తీరాన అనురాగ బంధం</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="image-wrapper">
+            <img src="assets/wedding/gallery-trad-2.jpg" alt="Couple Traditional Pose 2" loading="lazy" />
+            <div class="card-glass-sheen"></div>
+          </div>
+          <div class="gallery-card-footer">
+            <span class="category-tag">పరిణయ వేడుక</span>
+            <h4>జీవితాంతం కలసి ఉండగా</h4>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ఫోటోలు — Drive link only -->
-  <section class="section photos-section">
+  <!-- ==================== FAMILIES & WELL WISHERS ==================== -->
+  <section class="section families-section">
     <div class="section-inner">
-      <h2 class="section-title">{{ text.gl }}</h2>
-      <div class="drive-panel">
-        <img src="assets/wedding/56d391e6b75faca73c9d67b5063ef94a.png" class="drive-bird" alt="" aria-hidden="true" />
-        <ng-container *ngIf="data.driveLink; else noDrive">
-          <p>Wedding memories live in our shared album.</p>
-          <a class="walk-btn" [href]="data.driveLink" target="_blank" rel="noopener">{{ text.openDrive }}</a>
-        </ng-container>
-        <ng-template #noDrive>
-          <div class="blessings">
-            <p>{{ text.no }}</p>
+      <div class="section-header-mandapa">
+        <span class="header-sub">ఆత్మీయ బంధుమిత్రులు</span>
+        <h2 class="section-main-title">భవదీయులు & ఆగమనాభిలాషులు</h2>
+      </div>
+
+      <div class="family-tributes-grid">
+        <div class="tribute-card">
+          <div class="tribute-header">✨ భవదీయులు</div>
+          <div class="tribute-body">
+            <h3>శ్రీ మొండి గంగాధర్</h3>
+            <h3>శ్రీమతి దుర్గాభవాని</h3>
+            <p class="tribute-note">వధువు తల్లిదండ్రులు</p>
           </div>
-        </ng-template>
+        </div>
+
+        <div class="tribute-card">
+          <div class="tribute-header">🌿 ఆగమనాభిలాషులు</div>
+          <div class="tribute-body">
+            <h3>శ్రీ నామాల కృష్ణ (లేటు)</h3>
+            <h3>శ్రీమతి వరహాలమ్మ (లేటు)</h3>
+          </div>
+        </div>
+
+        <div class="tribute-card">
+          <div class="tribute-header">🌸 వరుని తల్లిదండ్రులు</div>
+          <div class="tribute-body">
+            <h3>శ్రీ ఆదిరెడ్డి నరసింహం</h3>
+            <h3>శ్రీమతి వెంకట గౌరి పార్వతి</h3>
+            <p class="tribute-note">హుకుంపేట, రాజమండ్రి రూరల్</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Relatives & Well Wishers List -->
+      <div class="relatives-honor-box">
+        <h4 class="honor-title">బంధుమిత్రుల అభినందనలతో :</h4>
+        <div class="relatives-names">
+          <span>శ్రీ ఈర్ల శ్రీను - శ్రీమతి మణి</span> •
+          <span>శ్రీ మొండి సతీష్ - శ్రీమతి శాంతి</span> •
+          <span>శ్రీ నామాల వెంకటరమణ (లేటు) - శ్రీమతి వెంకటరత్నం</span> •
+          <span>శ్రీ నామాల నాగేశ్వరరావు - శ్రీమతి వెంకటలక్ష్మి</span> •
+          <span>మొండి బ్రదర్స్ మరియు బంధుమిత్రులు</span>
+        </div>
+      </div>
+
+      <!-- Loving Brother Invitation (Lokesh) -->
+      <div class="brother-love-card">
+        <div class="peacock-icon">🦚</div>
+        <p class="brother-words">
+          "మా అక్క-బావల పెళ్ళికి మీరంతా తప్పక వస్తారని ఆశిస్తూ..."
+        </p>
+        <span class="brother-signature">మీ... లోకేష్</span>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-inner">
-      <h2 class="section-title">{{ text.fm }}</h2>
-      <div class="family-grid">
-        <div class="family-box">
-          <span class="tag">Bride's Family</span>
-          <strong>{{ data.brideFamily || 'Bride family' }}</strong>
-        </div>
-        <div class="family-box">
-          <span class="tag">Groom's Family</span>
-          <strong>{{ data.groomFamily || 'Groom family' }}</strong>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section closing-section">
-    <div class="section-inner blessings">
+  <!-- ==================== BLESSINGS & TRADITIONAL CLOSING ==================== -->
+  <section class="section blessings-section">
+    <div class="section-inner blessings-content">
       <div class="closing-lamps" aria-hidden="true">
         <span class="mini-diya"><i></i></span>
         <span class="mini-diya"><i></i></span>
         <span class="mini-diya"><i></i></span>
       </div>
-      <p>{{ data.message || text.msg }}<br /><br /><strong>{{ text.close }}</strong></p>
+      <h3 class="blessing-title">అభిలాష</h3>
+      <p class="blessing-para">
+        పచ్చని పందిరిలో ముత్యాల తలంబ్రాలు - వేదమంత్రాల నడుమ ఒకటవుతున్న<br>
+        మా చిరంజీవులను మీ పవిత్రమైన - దీవెనలతో ఆశీర్వదిస్తారని ఆకాంక్షిస్తూ ....
+      </p>
+      <div class="namaste-tag">సదా మీ రాకను కోరుతూ</div>
     </div>
   </section>
 
-  <div class="footer">{{ data.bride }} & {{ data.groom }} • {{ data.venue || 'Wedding Celebration' }}</div>
+  <!-- ==================== SINGLE LINE FOOTER ==================== -->
+  <footer class="single-line-creator-footer">
+    <p class="single-line-contact-text">
+      To know me and contact for wedding websites: <strong>Ganapathi Pavan Kumar</strong> • 📞 <a href="tel:8143757999">8143757999</a> • ✉️ <a href="mailto:gana.kpk&#64;gmail.com">gana.kpk&#64;gmail.com</a>
+    </p>
+  </footer>
+
+  <!-- Sticky Quick Bar for Mobile Users -->
+  <div class="sticky-action-bar">
+    <a [href]="data.mapUrl" target="_blank" rel="noopener" class="bar-link maps-link">
+      📍 వేదిక లొకేషన్
+    </a>
+    <button type="button" (click)="toggleInvitationModal(true)" class="bar-link card-link">
+      📜 ఆహ్వాన పత్రిక
+    </button>
+  </div>
+
+  <!-- ==================== INVITATION CARD FULLSCREEN MODAL ==================== -->
+  <div *ngIf="showInvitationModal" class="invitation-modal-backdrop" (click)="toggleInvitationModal(false)">
+    <div class="invitation-modal-box" (click)="$event.stopPropagation()">
+      <button type="button" class="close-modal-btn" (click)="toggleInvitationModal(false)">✕ మూసివేయి</button>
+      <div class="modal-card-wrapper">
+        <img src="assets/wedding/invitation-card.jpg" alt="Wedding Invitation Card" class="invitation-full-image" />
+      </div>
+      <div class="modal-footer-action">
+        <a href="assets/wedding/invitation-card.jpg" download="Divya-PavanKumar-Wedding-Card.jpg" class="download-card-btn">
+          📥 ఆహ్వాన పత్రిక డౌన్‌లోడ్ చేసుకోండి (Download Card)
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
