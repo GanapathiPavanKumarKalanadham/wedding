@@ -43,6 +43,7 @@ export interface WeddingData {
   brideImage: string;
   groomImage: string;
   invitationCardImage: string;
+  groomInvitationCardImage?: string;
   driveLink: string;
   events: WeddingEvent[];
   gallery: string[];

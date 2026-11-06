@@ -6,15 +6,6 @@ import { Subscription, interval } from 'rxjs';
 import { WeddingData, WeddingEvent } from '../models/wedding-data.model';
 import { WeddingDataService } from '../services/wedding-data.service';
 
-const trans = {
-  te: { wd: 'వివాహ ఆహ్వానం', weds: 'వివాహం', ev: 'శుభ కార్యక్రమాలు', gl: 'ఫోటోలు', fm: 'ఆశీస్సులతో', vn: 'వేదిక', d: 'రోజులు', h: 'గంటలు', m: 'నిమిషాలు', s: 'ఫోటోలు చూడండి', mp: 'మ్యాప్ చూడండి', no: 'ఫోటో డ్రైవ్ లింక్ త్వరలో జోడించబడుతుంది', msg: 'మా ఇంట జరిగే శుభకార్యానికి మీరు కుటుంబ సమేతంగా విచ్చేసి వధూవరులను ఆశీర్వదించగలరు.', invite: 'కుటుంబ సమేతంగా రావలసిన ప్రత్యేక సందర్భం', close: 'ఆశీర్వాదములతో', together: 'కుటుంబాలతో కలిసి', celebrate: 'వివాహ వేడుకకు ఆహ్వానం', stepsSub: 'ప్రతి అడుగు ఒక శుభ కార్యక్రమం — క్రిస్-క్రాస్ నడక', walk: 'తదుపరి అడుగు', restart: 'మళ్లీ నడవండి', bride: 'వధువు', groom: 'వరుడు', openDrive: 'వెడ్డింగ్ ఫోటో డ్రైవ్ తెరవండి' },
-  en: { wd: 'Wedding Invitation', weds: 'weds', ev: 'Wedding Events', gl: 'Photo Gallery', fm: 'With the blessings of', vn: 'Venue', d: 'Days', h: 'Hours', m: 'Mins', s: 'View gallery', mp: 'Open map', no: 'Photo drive link will be added soon', msg: 'We joyfully invite you and your family to bless the couple on their auspicious wedding day.', invite: 'A sacred celebration of love and togetherness', close: 'With blessings and love', together: 'Together with their families', celebrate: 'Invite you to celebrate their wedding', stepsSub: 'Each footprint is a sacred event — walked criss-cross, one after another', walk: 'Take next step', restart: 'Walk again', bride: 'Bride', groom: 'Groom', openDrive: 'Open Wedding Photo Drive' },
-  hi: { wd: 'विवाह निमंत्रण', weds: 'परिणय', ev: 'शुभ कार्यक्रम', gl: 'फ़ोटो गैलरी', fm: 'आशीर्वाद सहित', vn: 'स्थान', d: 'दिन', h: 'घंटे', m: 'मिनट', s: 'गैलरी देखें', mp: 'मैप देखें', no: 'फ़ोटो ड्राइव लिंक जल्द जोड़ा जाएगा', msg: 'आप सपरिवार पधारकर वर-वधू को आशीर्वाद दें, यही हमारी विनम्र प्रार्थना है।', invite: 'प्रेम और परंपरा का पवित्र मिलन', close: 'आशीर्वाद और स्नेह के साथ', together: 'अपने परिवारों के साथ', celebrate: 'अपने विवाह उत्सव में आमंत्रित करते हैं', stepsSub: 'हर कदम एक शुभ कार्यक्रम — क्रिस-क्रॉस चाल', walk: 'अगला कदम', restart: 'फिर से चलें', bride: 'वधू', groom: 'वर', openDrive: 'वेडिंग फ़ोटो ड्राइव खोलें' },
-  ta: { wd: 'திருமண அழைப்பிதழ்', weds: 'மணமக்கள்', ev: 'சுப நிகழ்வுகள்', gl: 'புகைப்படங்கள்', fm: 'ஆசீர்வாதத்துடன்', vn: 'இடம்', d: 'நாட்கள்', h: 'மணி', m: 'நிமிடம்', s: 'கேலரி', mp: 'வரைபடம்', no: 'புகைப்பட டிரைவ் இணைப்பு விரைவில்', msg: 'தாங்கள் குடும்பத்துடன் வருகை தந்து மணமக்களை ஆசீர்வதிக்க அன்புடன் அழைக்கிறோம்.', invite: 'அன்பும் ஒற்றுமையும் நிறைந்த புனித கொண்டாட்டம்', close: 'ஆசீர்வாதங்களுடன்', together: 'குடும்பங்களுடன் இணைந்து', celebrate: 'திருமண விழாவிற்கு அழைக்கிறோம்', stepsSub: 'ஒவ்வொரு அடியும் ஒரு சுப நிகழ்வு', walk: 'அடுத்த அடி', restart: 'மீண்டும் நடக்க', bride: 'மணமகள்', groom: 'மணமகன்', openDrive: 'திருமண புகைப்பட டிரைவ்' },
-  kn: { wd: 'ವಿವಾಹ ಆಮಂತ್ರಣ', weds: 'ವಿವಾಹ', ev: 'ಶುಭ ಕಾರ್ಯಕ್ರಮಗಳು', gl: 'ಫೋಟೋ ಗ್ಯಾಲರಿ', fm: 'ಆಶೀರ್ವಾದದೊಂದಿಗೆ', vn: 'ಸ್ಥಳ', d: 'ದಿನಗಳು', h: 'ಗಂಟೆಗಳು', m: 'ನಿಮಿಷ', s: 'ಗ್ಯಾಲರಿಯನ್ನು ನೋಡಿ', mp: 'ನಕ್ಷೆ ನೋಡಿ', no: 'ಫೋಟೋ ಡ್ರೈವ್ ಲಿಂಕ್ ಶೀಘ್ರದಲ್ಲೇ', msg: 'ತಾವು ಕುಟುಂಬ ಸಮೇತರಾಗಿ ಬಂದು ವಧೂವರರನ್ನು ಆಶೀರ್ವದಿಸಬೇಕೆಂದು ಕೋರಿಕೊಳ್ಳುತ್ತೇವೆ.', invite: 'ಪ್ರೇಮ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕತೆಯ ಪವಿತ್ರ ಸಂಭ್ರಮ', close: 'ಆಶೀರ್ವಾದದೊಂದಿಗೆ', together: 'ಕುಟುಂಬಗಳೊಂದಿಗೆ', celebrate: 'ವಿವಾಹಕ್ಕೆ ಆಹ್ವಾನಿಸುತ್ತೇವೆ', stepsSub: 'ಪ್ರತಿ ಹೆಜ್ಜೆಯೂ ಒಂದು ಶುಭ ಕಾರ್ಯಕ್ರಮ', walk: 'ಮುಂದಿನ ಹೆಜ್ಜೆ', restart: 'ಮತ್ತೆ ನಡೆಯಿರಿ', bride: 'ವಧು', groom: 'ವರ', openDrive: 'ವೆಡ್ಡಿಂಗ್ ಫೋಟೋ ಡ್ರೈವ್' },
-  ml: { wd: 'വിവാഹ ക്ഷണം', weds: 'വിവാഹം', ev: 'ശുഭചടങ്ങുകൾ', gl: 'ഫോട്ടോ ഗാലറി', fm: 'അനുഗ്രഹത്തോടെ', vn: 'വേദി', d: 'ദിവസം', h: 'മണിക്കൂർ', m: 'മിനിറ്റ്', s: 'ഗാലറി', mp: 'മാപ്പ്', no: 'ഫോട്ടോ ഡ്രൈവ് ലിങ്ക് ഉടൻ', msg: 'കുടുംബസമേതം എത്തി വധൂവരന്മാരെ അനുഗ്രഹിക്കണമെന്ന് സ്നേഹപൂർവ്വം ക്ഷണിക്കുന്നു.', invite: 'സ്നേഹവും ചേര്ച്ചയും നിറഞ്ഞ ഒരു പവിത്ര ആഘോഷം', close: 'അനുഗ്രഹത്തോടെ', together: 'കുടുംബങ്ങളോടൊപ്പം', celebrate: 'വിവാഹത്തിലേക്ക് ക്ഷണിക്കുന്നു', stepsSub: 'ഓരോ ചുവടും ഒരു ശുഭചടങ്ങ്', walk: 'അടുത്ത ചുവട്', restart: 'വീണ്ടും നടക്കൂ', bride: 'വധു', groom: 'വരൻ', openDrive: 'വെഡ്ഡിംഗ് ഫോട്ടോ ഡ്രൈവ്' }
-};
-
 export interface JourneyStep {
   name: string;
   teluguName?: string;
@@ -26,8 +17,142 @@ export interface JourneyStep {
   mapUrl?: string;
   icon?: string;
   description?: string;
+  enDescription?: string;
   note?: string;
 }
+
+const trans = {
+  te: {
+    wd: 'వివాహ ఆహ్వానం',
+    weds: 'వివాహం',
+    ev: 'శుభ కార్యక్రమాలు',
+    gl: 'చిత్రమాలిక',
+    fm: 'భవదీయులు & ఆగమనాభిలాషులు',
+    vn: 'కళ్యాణ వేదిక & శుభలేఖలు',
+    d: 'రోజులు',
+    h: 'గంటలు',
+    m: 'నిమిషాలు',
+    s: 'సెకన్లు',
+    mp: 'మ్యాప్ చూడండి',
+    msg: 'మా ఇంట జరిగే శుభకార్యానికి మీరు కుటుంబ సమేతంగా విచ్చేసి వధూవరులను ఆశీర్వదించగలరు.',
+    invite: 'వివాహ ఆహ్వానం',
+    close: 'ఆశీర్వాదములతో',
+    stepsTitle: 'ఏడడుగులు — శుభ కార్యక్రమాల ప్రయాణం',
+    stepsSub: 'పూల రంగవల్లులు మరియు దీపాల నడుమ పవిత్రమైన ఏడడుగుల నడక. స్క్రోల్ చేస్తూ ప్రతి శుభ ఘట్టాన్ని దర్శించండి.',
+    stepLabel: 'అడుగు',
+    activeStepLabel: 'ప్రస్తుత శుభ ఘట్టం',
+    completedStepLabel: 'దర్శించిన శుభకార్యం',
+    viewMapLabel: 'Google Maps లో లొకేషన్ చూడండి',
+    bride: 'వధువు (చి॥ల॥సౌ॥)',
+    groom: 'వరుడు (చి॥)',
+    groomRole: 'వరుడు',
+    brideRole: 'వధువు',
+    welcomeOpen: 'వివాహ పత్రికను తెరవడానికి తాకండి (Tap to Open Invitation)',
+    welcomeKicker: 'శ్రీరస్తు • శుభమస్తు • అవిఘ్నమస్తు',
+    welcomeSubtitle: 'వివాహ ఆహ్వాన శుభపత్రిక',
+    welcomeCoupleNames: 'పవన్ కుమార్ & దివ్య',
+    welcomeInvitationNote: 'సీతారాముల దివ్య ఆశీస్సులతో వివాహ ఆహ్వానం',
+    welcomeClickHint: 'వివాహ శుభలేఖ తెరవబడుతోంది...',
+    cardSelectGroom: 'వరుని శుభలేఖ (Groom Card)',
+    cardSelectBride: 'వధువు శుభలేఖ (Bride Card)',
+    countdownTitle: '✨ కళ్యాణ మహోత్సవ సుముహూర్తానికి సమయం ✨',
+    muhurthamLabel: 'సుముహూర్తము',
+    muhurthamTimeText: 'రాత్రి 09:37 ని॥లకు (సుముహూర్తం)',
+    venueMapBtn: '📍 కళ్యాణ వేదిక లొకేషన్ (Marriage Venue Map)',
+    videoTitle: 'వధూవరుల పరిచయ వేడుక వీడియో (Couple Special Moments)',
+    videoSub: 'మధుర స్మృతులు',
+    galleryTitle: 'వధూవరుల అందమైన చిత్రమాలిక (Photo Gallery)',
+    gallerySub: 'స్నేహం • ప్రేమ • పరిణయం',
+    officialCardsTitle: 'కళ్యాణ వేదిక & శుభలేఖలు (Official Wedding Cards)',
+    langLabel: 'English',
+    currentLangCode: 'te'
+  },
+  en: {
+    wd: 'Wedding Invitation',
+    weds: 'weds',
+    ev: 'Auspicious Ceremonies',
+    gl: 'Photo Gallery',
+    fm: 'With Best Compliments & Blessings',
+    vn: 'Wedding Venue & Cards',
+    d: 'Days',
+    h: 'Hours',
+    m: 'Mins',
+    s: 'Secs',
+    mp: 'View Map',
+    msg: 'We cordially invite you and your family to grace the auspicious wedding ceremony and bless the couple.',
+    invite: 'Wedding Invitation',
+    close: 'With warm regards & blessings',
+    stepsTitle: 'The Seven Sacred Steps — Wedding Journey',
+    stepsSub: 'The holy journey of seven steps amidst flower rangoli and sacred lamps. Scroll to explore each ceremony.',
+    stepLabel: 'Step',
+    activeStepLabel: 'Active Ceremony',
+    completedStepLabel: 'Completed',
+    viewMapLabel: 'View Location in Google Maps',
+    bride: 'Bride',
+    groom: 'Groom',
+    groomRole: 'Groom',
+    brideRole: 'Bride',
+    welcomeOpen: 'Tap to Open Sacred Wedding Invitation',
+    welcomeKicker: 'Sri Rastu • Subhamastu • Avighnamastu',
+    welcomeSubtitle: 'Wedding Invitation Card',
+    welcomeCoupleNames: 'Pavan Kumar & Divya',
+    welcomeInvitationNote: 'With the divine blessings of Sri Sita Rama Kalyanam',
+    welcomeClickHint: 'Opening wedding card invitation...',
+    cardSelectGroom: "Groom's Invitation Card",
+    cardSelectBride: "Bride's Invitation Card",
+    countdownTitle: '✨ Countdown to Auspicious Muhurtham ✨',
+    muhurthamLabel: 'Muhurtham',
+    muhurthamTimeText: 'Night at 09:37 PM (Muhurtham)',
+    venueMapBtn: '📍 Wedding Venue Location Map',
+    videoTitle: 'Couple Special Moments & Journey Video',
+    videoSub: 'Cherished Memories',
+    galleryTitle: 'Couple Photo Gallery',
+    gallerySub: 'Love • Togetherness • Celebration',
+    officialCardsTitle: 'Wedding Venue & Official Subhalekha Cards',
+    langLabel: 'తెలుగు',
+    currentLangCode: 'en'
+  }
+};
+
+const EN_EVENT_DESCRIPTIONS: Record<string, { name: string; desc: string; time: string; venue?: string }> = {
+  'Ganesh Biyam': {
+    name: 'Ganesh Biyam (Vighneshwara Pooja)',
+    desc: 'Sacred Ganesh Biyam pooja seeking the blessings of Lord Vighneshwara for obstacle-free, smooth wedding celebrations.',
+    time: 'Morning 09:00 AM'
+  },
+  'Pelli Kuturu & Pelli Koduku': {
+    name: 'Pelli Koduku & Pelli Kooturu Ceremony',
+    desc: 'Auspicious ritual of applying turmeric (pasupu) and ceremonial oil bath dressing the groom and bride traditionally.',
+    time: 'Morning 10:00 AM'
+  },
+  'Haldi Function': {
+    name: 'Haldi Celebration',
+    desc: 'Vibrant turmeric celebration filled with music, dance, joyous moments with cousins and family members.',
+    time: 'Morning 09:00 AM'
+  },
+  'Sangeeth': {
+    name: 'Sangeeth & Musical Evening',
+    desc: 'Friday evening 05:00 PM onwards filled with vibrant music, celebratory dances, and joyous family performances.',
+    time: 'Evening 05:00 PM'
+  },
+  'Vindhu (Wedding Dinner)': {
+    name: 'Vindhu (Traditional Wedding Dinner)',
+    desc: 'Grand traditional Telugu wedding dinner hosted for all beloved relatives and friends at the marriage venue.',
+    time: 'Friday Night from 07:00 PM',
+    venue: 'Sri Uma Rama Lingeshwara Function Hall, Jampeta Gandhi Bomma Street, Rajahmundry'
+  },
+  'Subha Muhurtham (Marriage)': {
+    name: 'Subha Muhurtham (Kalyana Mahotsavam)',
+    desc: 'Sacred Jeelakarra Bellam and Mangalya Dharana tying the knot of eternal togetherness at the auspicious Dhanus lagna.',
+    time: 'Friday Night at 09:37 PM (Subha Muhurtham)',
+    venue: 'Sri Uma Rama Lingeshwara Function Hall, Jampeta Gandhi Bomma Street, Rajahmundry'
+  },
+  'Reception': {
+    name: 'Grand Reception Celebration',
+    desc: 'Grand get-together and fellowship to felicitate, bless and celebrate with the newly-wed couple.',
+    time: 'Date to be announced'
+  }
+};
 
 @Component({
   selector: 'app-wedding',
@@ -39,22 +164,28 @@ export interface JourneyStep {
 export class WeddingComponent implements OnInit, OnDestroy {
   data!: WeddingData;
   text = trans.te;
+  currentLang: 'te' | 'en' = 'te';
+
   nextEvent: (WeddingEvent & { stamp: number }) | null = null;
   countdown = { days: '00', hours: '00', minutes: '00', seconds: '00' };
   activeStep = 0;
   walkedSteps = 1;
-  isWalking = false;
   journeySteps: JourneyStep[] = [];
-  activeTab: 'all' | 'muhurtham' | 'rituals' = 'all';
+
+  // Welcome card gatekeeper with Sita-Ram animated book unfold
+  isWelcomeCardOpened = false;
+  isOpeningCardAnimation = false;
+
+  // Invitation Modal
   showInvitationModal = false;
-  isAudioPlaying = false;
+  selectedCardType: 'groom' | 'bride' = 'groom';
+
   videoUrl: SafeResourceUrl;
   autoPlayVideo = false;
 
   @ViewChild('videoSection') videoSectionRef?: ElementRef;
 
   private timerSub?: Subscription;
-  private walkTimer?: ReturnType<typeof setTimeout>;
 
   constructor(
     private weddingDataService: WeddingDataService,
@@ -63,6 +194,46 @@ export class WeddingComponent implements OnInit, OnDestroy {
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       'https://www.youtube.com/embed/XRk7sBvrKIs?enablejsapi=1&rel=0&modestbranding=1'
     );
+  }
+
+  ngOnInit(): void {
+    this.data = this.weddingDataService.getData();
+    // Default to groom-first and Telugu
+    this.currentLang = 'te';
+    this.text = trans[this.currentLang];
+    this.selectedCardType = 'groom';
+    this.syncJourneySteps();
+    this.updateCountdown();
+    this.timerSub = interval(1000).subscribe(() => this.updateCountdown());
+  }
+
+  ngOnDestroy(): void {
+    this.timerSub?.unsubscribe();
+  }
+
+  toggleLanguage(): void {
+    this.currentLang = this.currentLang === 'te' ? 'en' : 'te';
+    this.text = trans[this.currentLang];
+    this.syncJourneySteps();
+    this.updateCountdown();
+  }
+
+  openWelcomeCard(): void {
+    if (this.isOpeningCardAnimation) return;
+    this.isOpeningCardAnimation = true;
+    setTimeout(() => {
+      this.isWelcomeCardOpened = true;
+      this.isOpeningCardAnimation = false;
+    }, 1100);
+  }
+
+  toggleInvitationModal(show: boolean, type: 'groom' | 'bride' = 'groom'): void {
+    this.showInvitationModal = show;
+    this.selectedCardType = type;
+  }
+
+  switchCardTab(type: 'groom' | 'bride'): void {
+    this.selectedCardType = type;
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -84,17 +255,17 @@ export class WeddingComponent implements OnInit, OnDestroy {
   }
 
   private updateVerticalScrollJourney(): void {
-    const stageElements = document.querySelectorAll('.vertical-stage-node');
+    const stageElements = document.querySelectorAll('.snake-stage-node');
     if (!stageElements || stageElements.length === 0) return;
 
-    const windowCenter = window.innerHeight * 0.5;
+    const windowCenter = window.innerHeight * 0.48;
     let closestIndex = 0;
     let minDistance = Infinity;
 
     stageElements.forEach((el, index) => {
       const rect = el.getBoundingClientRect();
-      const distance = Math.abs(rect.top + rect.height * 0.35 - windowCenter);
-      if (rect.top <= windowCenter + 120 && distance < minDistance) {
+      const distance = Math.abs(rect.top + rect.height * 0.3 - windowCenter);
+      if (rect.top <= windowCenter + 150 && distance < minDistance) {
         minDistance = distance;
         closestIndex = index;
       }
@@ -106,66 +277,47 @@ export class WeddingComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit(): void {
-    this.data = this.weddingDataService.getData();
-    this.text = trans[this.data.language] ?? trans.te;
-    this.syncJourneySteps();
-    this.updateCountdown();
-    this.timerSub = interval(1000).subscribe(() => this.updateCountdown());
-  }
-
-  ngOnDestroy(): void {
-    this.timerSub?.unsubscribe();
-    if (this.walkTimer) clearTimeout(this.walkTimer);
-  }
-
-  changeLanguage(value: string): void {
-    this.weddingDataService.setLanguage(value as any);
-    this.data = this.weddingDataService.getData();
-    this.text = trans[this.data.language] ?? trans.en;
-    this.syncJourneySteps();
-    this.updateCountdown();
-  }
-
-  getSacredText(): string {
-    const sacred = {
-      lak: 'శ్రీ లక్ష్మీనారాయణాయ నమః',
-      sita: 'శ్రీ సీతారామచంద్రాయ నమః',
-      venk: 'ఓం నమో వేంకటేశాయ',
-      anna: 'శ్రీ సత్యనారాయణ స్వామియే నమః'
-    };
-    return sacred[this.data.theme] ?? sacred.lak;
-  }
-
   formatDate(date: string, time: string): string {
-    if (!date) return 'Date to be announced';
+    if (!date) return this.currentLang === 'te' ? 'తేదీ త్వరలో' : 'Date to be announced';
     const parsed = new Date(`${date}${time ? `T${time}` : ''}`);
     if (Number.isNaN(parsed.getTime())) return date;
-    return parsed.toLocaleString(this.data.language + '-IN', { dateStyle: 'full', timeStyle: time ? 'short' : undefined });
+    return parsed.toLocaleString(this.currentLang === 'te' ? 'te-IN' : 'en-IN', {
+      dateStyle: 'full',
+      timeStyle: time ? 'short' : undefined
+    });
   }
 
-  getEventDatePart(part: 'month' | 'day' | 'year'): string {
-    if (!this.nextEvent?.date) {
-      const fallback = { month: 'AUG', day: '24', year: '2026' };
-      return fallback[part];
+  getEventName(step: JourneyStep): string {
+    if (this.currentLang === 'en') {
+      return EN_EVENT_DESCRIPTIONS[step.name]?.name || step.name;
     }
-
-    const parsed = new Date(`${this.nextEvent.date}T12:00:00`);
-    if (Number.isNaN(parsed.getTime())) {
-      return part === 'month' ? 'AUG' : part === 'day' ? '24' : '2026';
-    }
-
-    const map = {
-      month: parsed.toLocaleString('en-US', { month: 'short' }).toUpperCase(),
-      day: String(parsed.getDate()).padStart(2, '0'),
-      year: String(parsed.getFullYear())
-    };
-
-    return map[part];
+    return step.teluguName || step.name;
   }
 
-  getEventTime(): string {
-    return this.nextEvent?.time || '7 PM';
+  getEventSubName(step: JourneyStep): string {
+    if (this.currentLang === 'en') {
+      return step.teluguName || '';
+    }
+    return step.name;
+  }
+
+  getEventDescription(step: JourneyStep): string {
+    if (this.currentLang === 'en') {
+      return EN_EVENT_DESCRIPTIONS[step.name]?.desc || step.description || '';
+    }
+    return step.description || '';
+  }
+
+  getEventTime(step: JourneyStep): string {
+    if (this.currentLang === 'en') {
+      return EN_EVENT_DESCRIPTIONS[step.name]?.time || step.time;
+    }
+    if (step.time === '21:37') return 'రాత్రి 09:37 ని॥లకు (సుముహూర్తం)';
+    if (step.time === '17:00') return 'సాయంత్రం 05:00 PMకి';
+    if (step.time === '19:00') return 'రాత్రి 07:00 PM నుండి';
+    if (step.time === '10:00') return 'ఉదయం 10:00 AM';
+    if (step.time === '09:00') return 'ఉదయం 09:00 AM';
+    return step.time;
   }
 
   syncJourneySteps(): void {
@@ -179,8 +331,9 @@ export class WeddingComponent implements OnInit, OnDestroy {
         venue: event.venue,
         teluguVenue: event.teluguVenue,
         mapUrl: event.mapUrl,
-        icon: event.icon || '🌺',
+        icon: event.icon || '🌸',
         description: event.description,
+        enDescription: EN_EVENT_DESCRIPTIONS[event.name]?.desc,
         note: event.description || event.subTitle || 'శుభకార్య వేడుక'
       }));
     } else {
@@ -192,76 +345,9 @@ export class WeddingComponent implements OnInit, OnDestroy {
     }
   }
 
-  isLeftFoot(index: number): boolean {
-    return index % 2 === 0;
-  }
-
-  footTop(index: number): string {
-    const total = Math.max(1, this.journeySteps.length);
-    return `${10 + (index * (80 / total))}%`;
-  }
-
-  footLeft(index: number): string {
-    return this.isLeftFoot(index) ? '25%' : '65%';
-  }
-
-  takeNextStep(): void {
-    if (this.isWalking) return;
-    const total = this.journeySteps.length;
-    if (total === 0) return;
-
-    if (this.walkedSteps >= total) {
-      this.walkedSteps = 1;
-      this.activeStep = 0;
-      return;
-    }
-
-    this.isWalking = true;
-    this.walkedSteps += 1;
-    this.activeStep = this.walkedSteps - 1;
-
-    if (this.walkTimer) clearTimeout(this.walkTimer);
-    this.walkTimer = setTimeout(() => {
-      this.isWalking = false;
-    }, 700);
-  }
-
   selectJourneyStep(index: number): void {
     this.activeStep = index;
     this.walkedSteps = Math.max(this.walkedSteps, index + 1);
-  }
-
-  get currentEvent(): JourneyStep {
-    return this.journeySteps[Math.min(this.activeStep, Math.max(0, this.journeySteps.length - 1))] || {
-      name: 'కళ్యాణ మహోత్సవం',
-      teluguName: 'కళ్యాణ మహోత్సవం',
-      date: '2026-11-20',
-      time: '21:37',
-      venue: 'రాజమండ్రి',
-      teluguVenue: 'రాజమండ్రి',
-      note: 'శుభ ముహూర్తం'
-    };
-  }
-
-  toggleInvitationModal(show: boolean): void {
-    this.showInvitationModal = show;
-  }
-
-  onImageUpload(event: Event, type: 'bride' | 'groom'): void {
-    const input = event.target as HTMLInputElement;
-    if (!input.files || input.files.length === 0) return;
-    const file = input.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result as string;
-      if (type === 'bride') {
-        this.weddingDataService.updateField('brideImage', result);
-      } else {
-        this.weddingDataService.updateField('groomImage', result);
-      }
-      this.data = this.weddingDataService.getData();
-    };
-    reader.readAsDataURL(file);
   }
 
   updateCountdown(): void {
@@ -273,8 +359,10 @@ export class WeddingComponent implements OnInit, OnDestroy {
       }))
       .sort((a, b) => a.stamp - b.stamp);
 
-    // Pick marriage or next upcoming event
-    const marriageEvent = upcoming.find(e => e.name.toLowerCase().includes('muhurtham') || e.name.toLowerCase().includes('marriage'));
+    const marriageEvent = upcoming.find(e =>
+      e.name.toLowerCase().includes('muhurtham') ||
+      e.name.toLowerCase().includes('marriage')
+    );
     this.nextEvent = marriageEvent ?? upcoming[0] ?? null;
 
     if (!this.nextEvent) {
@@ -298,20 +386,12 @@ export class WeddingComponent implements OnInit, OnDestroy {
   }
 
   getThemeStyles(): Record<string, string> {
-    const themes = {
-      lak: { primary: '#7a1029', secondary: '#c9a227', surface: '#fdf8f0', text: '#4a1f28', decor: '#f3e4c4' },
-      sita: { primary: '#0b5f42', secondary: '#d8a84d', surface: '#f5fef7', text: '#123b2e', decor: '#d7f4dd' },
-      venk: { primary: '#1a366f', secondary: '#e6b436', surface: '#fefaf0', text: '#1d2d52', decor: '#e8eefc' },
-      anna: { primary: '#bf5007', secondary: '#c98b22', surface: '#fff4eb', text: '#5b2a1f', decor: '#f9dec8' }
-    };
-
-    const selected = themes[this.data.theme] ?? themes.lak;
     return {
-      '--site-primary': selected.primary,
-      '--site-secondary': selected.secondary,
-      '--site-surface': selected.surface,
-      '--site-text': selected.text,
-      '--site-decor': selected.decor
+      '--site-primary': '#85122d',
+      '--site-secondary': '#d4a024',
+      '--site-surface': '#fffbf2',
+      '--site-text': '#3a101b',
+      '--site-decor': '#fdf5df'
     };
   }
 }

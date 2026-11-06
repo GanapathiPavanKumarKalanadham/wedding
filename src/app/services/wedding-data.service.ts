@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WeddingData, WeddingEvent, WeddingLanguage, WeddingTheme } from '../models/wedding-data.model';
 
-const STORAGE_KEY = 'vivaha-vedika-angular-data-v4';
+const STORAGE_KEY = 'vivaha-vedika-angular-data-v7';
 
 const DEFAULT_DATA: WeddingData = {
   theme: 'lak',
@@ -17,28 +17,30 @@ const DEFAULT_DATA: WeddingData = {
   groomFather: 'శ్రీ ఆదిరెడ్డి నరసింహం',
   groomMother: 'శ్రీమతి వెంకట గౌరి పార్వతి',
   brideGrandParents: 'శ్రీ మొండి నాగరాజు, శ్రీమతి అమ్మాజీ గార్ల దివ్య ఆశీస్సులతో...',
-  groomGrandParents: '',
+  groomGrandParents: 'కీ॥శే॥ శ్రీ ఆదిరెడ్డి భోగేశ్వరరావు, శ్రీమతి పాపమ్మ గార్ల దివ్య ఆశీస్సులతో...',
   brideFamily: 'శ్రీ మొండి గంగాధర్, శ్రీమతి దుర్గాభవాని దంపతులు (ఏకైక కుమార్తె)',
-  groomFamily: 'శ్రీ ఆదిరెడ్డి నరసింహం, శ్రీమతి వెంకట గౌరి పార్వతి దంపతులు (ఏకైక కుమారుడు) - హుకుంపేట, రాజమండ్రి రూరల్, నామవరం గ్రామ వాస్తవ్యులు',
+  groomFamily: 'శ్రీ ఆదిరెడ్డి నరసింహం, శ్రీమతి వెంకట గౌరి పార్వతి దంపతులు (ఏకైక కుమారుడు) - హుకుంపేట, రాజమండ్రి రూరల్',
   venue: 'Sri Uma Rama Lingeshwara Function Hall, Gandhi Bomma Veedhi, Jampeta, Rajahmundry',
   venueTelugu: 'శ్రీ ఉమా రామ లింగేశ్వర ఫంక్షన్ హాల్, జాం పేట గాంధీ బొమ్మ వీధి, రాజమండ్రి',
   dinnerVenueTelugu: 'శ్రీ ఉమా రామ లింగేశ్వర ఫంక్షన్ హాల్, కళ్యాణ వేదిక నందు',
   dinnerTimeTelugu: 'ది. 20-11-2026 శుక్రవారం రాత్రి 7:00 గంటల నుండి',
   muhurthamTimeTelugu: 'ది. 20-11-2026 శుక్రవారం రాత్రి 09:37 నిమిషాలకు',
-  tithiNakshatramTelugu: 'స్వస్తిశ్రీ చాంద్రవ శ్రీ పరాభవ నామ సంవత్సర కార్తీక శుద్ధ ఏకాదశి ఉత్తరభద్ర నక్షత్రయుక్త ధనుస్సు లగ్నమునందు',
+  tithiNakshatramTelugu: 'స్వస్తిశ్రీ చాంద్రమాన శ్రీ పరాభవ నామ సంవత్సర కార్తీక శుద్ధ ఏకాదశి ఉత్తరభద్ర నక్షత్రయుక్త ధనుస్సు లగ్నమునందు',
   mapUrl: 'https://maps.app.goo.gl/qrjV9x88hjcjeF4B7?g_st=ic',
   message: 'పచ్చని పందిరిలో ముత్యాల తలంబ్రాలు - వేదమంత్రాల నడుమ ఒకటవుతున్న మా చిరంజీవులను మీ పవిత్రమైన దీవెనలతో ఆశీర్వదిస్తారని ఆకాంక్షిస్తూ...',
   coverImage: 'assets/wedding/couple-telephone.jpg',
   brideImage: 'assets/wedding/bride-profile.jpg',
   groomImage: 'assets/wedding/groom-profile.jpg',
   invitationCardImage: 'assets/wedding/invitation-card.jpg',
+  groomInvitationCardImage: 'assets/wedding/groom-invitation-card.jpg',
   driveLink: '',
   contacts: [
-    { label: 'భవదీయులు', name: 'శ్రీ మొండి గంగాధర్, శ్రీమతి దుర్గాభవాని' },
-    { label: 'ఆగమనాభిలాషులు', name: 'శ్రీ నామాల కృష్ణ (లేటు), శ్రీమతి వరహాలమ్మ (లేటు)' },
-    { label: 'బంధుమిత్రుల అభినందనలతో', name: 'శ్రీ ఈర్ల శ్రీను - శ్రీమతి మణి, శ్రీ మొండి సతీష్ - శ్రీమతి శాంతి, శ్రీ నామాల వెంకటరమణ (లేటు) - శ్రీమతి వెంకటరత్నం, శ్రీ నామాల నాగేశ్వరరావు - శ్రీమతి వెంకటలక్ష్మి, మొండి బ్రదర్స్' }
+    { label: 'భవదీయులు (వధువు)', name: 'శ్రీ మొండి గంగాధర్, శ్రీమతి దుర్గాభవాని' },
+    { label: 'భవదీయులు (వరుడు)', name: 'శ్రీ తులసూర్ రఘునాథ్ - శ్రీమతి దుర్గ, శ్రీ తులసూర్ రవి వెంకటకుమార్ - శ్రీమతి తేజస్విని' },
+    { label: 'ఆగమనాభిలాషులు', name: 'శ్రీ ఆదిరెడ్డి నరసింహం, శ్రీమతి వెంకట గౌరిపార్వతి' },
+    { label: 'బంధుమిత్రుల అభినందనలతో', name: 'శ్రీ ఆదిరెడ్డి రామకృష్ణారావు - శ్రీమతి లక్ష్మి, శ్రీ సింగంపల్లి అప్పారావు - శ్రీమతి అప్పాయమ్మ (లేటు), శ్రీ కొరుపల్లి వెంకటేశ్వరరావు (లేటు) - శ్రీమతి అప్పలనరసమ్మ (లేటు), శ్రీ బండారు దుర్గాప్రసాద్ (లేటు) - శ్రీమతి నరసమాంబ, శ్రీ గులిపల్లి వెంకటేశ్వరరావు (లేటు) - శ్రీమతి వెంకటలక్ష్మి, శ్రీ ఆదిరెడ్డి కమల్ కుమార్ - శ్రీమతి మున్ని, శ్రీ ఆదిరెడ్డి ఉదయ్ కిరణ్ కుమార్ - శ్రీమతి సంధ్య, మొండి బ్రదర్స్, ఆదిరెడ్డి బ్రదర్స్ & సన్స్' }
   ],
-  lovingBrotherNote: 'మా అక్క-బావల పెళ్ళికి మీరంతా తప్పక వస్తారని ఆశిస్తూ... మీ... లోకేష్',
+  lovingBrotherNote: 'మా బావమరిది పెళ్ళికి మీరంతా తప్పక వస్తారని ఆశిస్తూ... మీ తులసూర్ రవి వెంకట కుమార్, శ్రీమతి తేజస్విని',
   events: [
     {
       name: 'Ganesh Biyam',
@@ -46,23 +48,23 @@ const DEFAULT_DATA: WeddingData = {
       subTitle: 'Sacred Ganesh Biyam Ritual & Auspicious Blessings',
       date: '2026-11-02',
       time: '09:00',
-      venue: 'Hukumpeta, Rajahmundry Rural',
-      teluguVenue: 'హుకుంపేట, రాజమండ్రి రూరల్',
-      mapUrl: 'https://maps.app.goo.gl/DG9dprpjiVnBv45C8?g_st=ic',
+      venue: '',
+      teluguVenue: '',
+      mapUrl: '',
       icon: '🕉️',
-      description: 'వివాహ కార్యాలు నిర్విఘ్నంగా పరిసమాప్తి చెందాలని గణపతి సన్నిధిలో పవిత్ర గణేష్ బియ్యం పూజ.'
+      description: 'వివాహ కార్యాలు నిర్విఘ్నంగా పరిసమాప్తి చెందాలని విఘ్నేశ్వరుని సన్నిధిలో పవిత్ర గణేష్ బియ్యం పూజ.'
     },
     {
-      name: 'Pelli Kuturu',
-      teluguName: 'పెళ్లి కూతురు వేడుక',
-      subTitle: 'Bride Ceremony & Traditional Rituals',
+      name: 'Pelli Kuturu & Pelli Koduku',
+      teluguName: 'పెళ్లి కూతురు & పెళ్లి కొడుకు వేడుక',
+      subTitle: 'Bride & Groom Ceremonies & Traditional Rituals',
       date: '2026-11-19',
       time: '10:00',
-      venue: 'Hukumpeta, Rajahmundry Rural',
-      teluguVenue: 'హుకుంపేట, రాజమండ్రి రూరల్',
-      mapUrl: 'https://maps.app.goo.gl/DG9dprpjiVnBv45C8?g_st=ic',
+      venue: '',
+      teluguVenue: '',
+      mapUrl: '',
       icon: '🌸',
-      description: 'వధువుకు మంగళస్నానం, పసుపు పూసి సంప్రదాయ వస్త్రాలంకరణతో జరిగే మంగళప్రదమైన శుభకార్యం.'
+      description: 'వధూవరులకు మంగళస్నానం, పసుపు పూసి సంప్రదాయ వస్త్రాలంకరణతో జరిగే మంగళప్రదమైన శుభకార్యం.'
     },
     {
       name: 'Haldi Function',
@@ -70,9 +72,9 @@ const DEFAULT_DATA: WeddingData = {
       subTitle: 'Mangala Snanam & Haldi Celebration',
       date: '2026-11-20',
       time: '09:00',
-      venue: 'Hukumpeta, Rajahmundry Rural',
-      teluguVenue: 'హుకుంపేట, రాజమండ్రి రూరల్',
-      mapUrl: 'https://maps.app.goo.gl/DG9dprpjiVnBv45C8?g_st=ic',
+      venue: '',
+      teluguVenue: '',
+      mapUrl: '',
       icon: '✨',
       description: 'బంధుమిత్రుల ఆనందోత్సాహాలు, సంగీతం, నృత్యాలు, పసుపు తలంబ్రాల సంతోషకరమైన వేడుక.'
     },
@@ -82,9 +84,9 @@ const DEFAULT_DATA: WeddingData = {
       subTitle: 'Musical Night, Dances & Joyful Celebration',
       date: '2026-11-20',
       time: '17:00',
-      venue: 'Hukumpeta, Rajahmundry Rural',
-      teluguVenue: 'హుకుంపేట, రాజమండ్రి రూరల్',
-      mapUrl: 'https://maps.app.goo.gl/DG9dprpjiVnBv45C8?g_st=ic',
+      venue: '',
+      teluguVenue: '',
+      mapUrl: '',
       icon: '🎶',
       description: '20, నవంబర్ 2026, శుక్రవారం సాయంత్రం 5:00 PMకి పాటలు, నృత్యాల సంగీత్ రంగుల వేడుక.'
     },
@@ -98,7 +100,7 @@ const DEFAULT_DATA: WeddingData = {
       teluguVenue: 'శ్రీ ఉమా రామ లింగేశ్వర ఫంక్షన్ హాల్, జాం పేట గాంధీ బొమ్మ వీధి, రాజమండ్రి',
       mapUrl: 'https://maps.app.goo.gl/qrjV9x88hjcjeF4B7?g_st=ic',
       icon: '🍛',
-      description: 'రాకతో మా ఇంట కళ్యాణ వైభవాన్ని నింపి, శుద్ధమైన తెలుగు సంప్రదాయ విందును ఆరగించి వధూవరులను ఆశీర్వదించండి.'
+      description: 'కళ్యాణ వేదిక వద్ద ఘనంగా ఏర్పాటు చేసిన రుచికరమైన తెలుగు సంప్రదాయ విందు ఆరగించి నూతన దంపతులను ఆశీర్వదించండి.'
     },
     {
       name: 'Subha Muhurtham (Marriage)',
@@ -110,7 +112,7 @@ const DEFAULT_DATA: WeddingData = {
       teluguVenue: 'శ్రీ ఉమా రామ లింగేశ్వర ఫంక్షన్ హాల్, జాం పేట గాంధీ బొమ్మ వీధి, రాజమండ్రి',
       mapUrl: 'https://maps.app.goo.gl/qrjV9x88hjcjeF4B7?g_st=ic',
       icon: '🪔',
-      description: 'కార్తీక శుద్ధ ఏకాదశి ఉత్తరభద్ర నక్షత్రయుక్త ధనుస్సు లగ్నమునందు రాత్రి 09:37 ని॥లకు జీలకర్ర బెల్లం, మంగళసూత్ర ధారణ.'
+      description: 'కార్తీక శుద్ధ ఏకాదశి ఉత్తరభద్ర నక్షత్రయుక్త ధనుస్సు లగ్నమునందు రాత్రి 09:37 ని॥లకు జీలకర్ర బెల్లం, మాంగల్య ధారణ మహోత్సవం.'
     },
     {
       name: 'Reception',
@@ -118,11 +120,11 @@ const DEFAULT_DATA: WeddingData = {
       subTitle: 'Grand Reception & Fellowship',
       date: '',
       time: '',
-      venue: 'Wedding Hall',
-      teluguVenue: 'వేదిక త్వరలో తెలియజేయబడును',
+      venue: '',
+      teluguVenue: '',
       mapUrl: '',
       icon: '💐',
-      description: 'నూతన దంపతులను ఆశీర్వదించేందుకు ఆత్మీయ విందు మరియు వేడుక.'
+      description: 'నూతన దంపతులను ఆశీర్వదించేందుకు ఆత్మీయ కలయిక మరియు ప్రత్యేక విందు.'
     }
   ],
   gallery: [
@@ -134,8 +136,7 @@ const DEFAULT_DATA: WeddingData = {
     'assets/wedding/gallery-trad-2.jpg',
     'assets/wedding/gallery-trad-hands.jpg',
     'assets/wedding/gallery-bride-trad.jpg',
-    'assets/wedding/gallery-ocean.jpg',
-    'assets/wedding/gallery-couple-denim.jpg'
+    'assets/wedding/gallery-ocean.jpg'
   ]
 };
 
