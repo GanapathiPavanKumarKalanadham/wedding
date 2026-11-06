@@ -1,7 +1,8 @@
 <div class="site" [ngStyle]="getThemeStyles()">
   <!-- FLOATING LANGUAGE TOGGLE (2 Language Support: Telugu & English) -->
   <aside class="lang-switcher-floating">
-    <button type="button" class="lang-toggle-btn" (click)="toggleLanguage()" [title]="'Switch Language to ' + text.langLabel">
+    <button type="button" class="lang-toggle-btn" (click)="toggleLanguage()"
+      [title]="'Switch Language to ' + text.langLabel">
       <span class="lang-icon">🌐</span>
       <span class="lang-name">{{ text.langLabel }}</span>
     </button>
@@ -37,7 +38,8 @@
 
         <!-- Header Content: The Wedding of Groom & Bride -->
         <div class="story-header-content">
-          <span class="story-kicker-title">{{ currentLang === 'te' ? 'కళ్యాణ మహోత్సవ ఆహ్వానం' : 'THE WEDDING OF' }}</span>
+          <span class="story-kicker-title">{{ currentLang === 'te' ? 'కళ్యాణ మహోత్సవ ఆహ్వానం' : 'THE WEDDING OF'
+            }}</span>
 
           <h1 class="story-couple-names">
             <span class="groom-script-name">{{ currentLang === 'te' ? data.groomTelugu : data.groom }}</span>
@@ -47,14 +49,16 @@
 
           <!-- Auspicious Subtitles -->
           <div class="story-blessing-subtext">
-            <span>{{ currentLang === 'te' ? 'శ్రీ సీతారాముల దివ్య ఆశీస్సులతో వివాహ మహోత్సవం' : 'United in Holy Matrimony with Divine Blessings' }}</span>
+            <span>{{ currentLang === 'te' ? 'శ్రీ సీతారాముల దివ్య ఆశీస్సులతో వివాహ మహోత్సవం' : 'United in Holy Matrimony
+              with Divine Blessings' }}</span>
           </div>
 
           <div class="story-wedding-date">
             🗓️ {{ currentLang === 'te' ? '20 నవంబర్ 2026, శుక్రవారం' : '20 NOVEMBER 2026, FRIDAY' }}
           </div>
           <div class="story-wedding-city">
-            📍 {{ currentLang === 'te' ? 'శ్రీ ఉమా రామ లింగేశ్వర ఫంక్షన్ హాల్ • రాజమండ్రి' : 'SRI UMA RAMA LINGESHWARA FUNCTION HALL • RAJAHMUNDRY' }}
+            📍 {{ currentLang === 'te' ? 'శ్రీ ఉమా రామ లింగేశ్వర ఫంక్షన్ హాల్ • రాజమండ్రి' : 'SRI UMA RAMA LINGESHWARA
+            FUNCTION HALL • RAJAHMUNDRY' }}
           </div>
 
           <!-- Prominent Maroon & Gold Pill Button -->
@@ -68,7 +72,8 @@
         <!-- Bottom Sacred Illustration: Sri Sita Rama Kalyanam Temple & Procession -->
         <div class="story-sita-ram-illustration">
           <div class="temple-shrine-glow"></div>
-          <img src="assets/wedding/rama-patta.png" alt="Sri Sita Rama Kalyanam Divine Temple Procession" class="sita-ram-procession-img" />
+          <img src="assets/wedding/rama-patta.png" alt="Sri Sita Rama Kalyanam Divine Temple Procession"
+            class="sita-ram-procession-img" />
           <div class="illustration-bottom-decor">
             <span>🪔</span><span>🏵️</span><span>✨</span><span>🏵️</span><span>🪔</span>
           </div>
@@ -105,14 +110,15 @@
   <!-- Traditional Top Thoranalu (Mango Leaves & Marigolds) -->
   <div class="thoranalu" aria-hidden="true">
     <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
-      <path d="M0,25 Q150,5 300,25 T600,25 T900,25 T1200,25" fill="none" stroke="#254d1e" stroke-width="4"/>
-      <g *ngFor="let i of [35,85,135,185,235,285,335,385,435,485,535,585,635,685,735,785,835,885,935,985,1035,1085,1135,1185]">
-        <ellipse [attr.cx]="i" cy="48" rx="16" ry="26" fill="#2d6e24"/>
-        <ellipse [attr.cx]="i - 10" cy="42" rx="14" ry="22" fill="#468e37"/>
-        <ellipse [attr.cx]="i + 10" cy="44" rx="14" ry="22" fill="#1e5218"/>
-        <circle [attr.cx]="i" cy="18" r="7" fill="#f59e0b"/>
-        <circle [attr.cx]="i" cy="18" r="4" fill="#fbbf24"/>
-        <circle [attr.cx]="i" cy="18" r="1.5" fill="#ffffff"/>
+      <path d="M0,25 Q150,5 300,25 T600,25 T900,25 T1200,25" fill="none" stroke="#254d1e" stroke-width="4" />
+      <g
+        *ngFor="let i of [35,85,135,185,235,285,335,385,435,485,535,585,635,685,735,785,835,885,935,985,1035,1085,1135,1185]">
+        <ellipse [attr.cx]="i" cy="48" rx="16" ry="26" fill="#2d6e24" />
+        <ellipse [attr.cx]="i - 10" cy="42" rx="14" ry="22" fill="#468e37" />
+        <ellipse [attr.cx]="i + 10" cy="44" rx="14" ry="22" fill="#1e5218" />
+        <circle [attr.cx]="i" cy="18" r="7" fill="#f59e0b" />
+        <circle [attr.cx]="i" cy="18" r="4" fill="#fbbf24" />
+        <circle [attr.cx]="i" cy="18" r="1.5" fill="#ffffff" />
       </g>
     </svg>
   </div>
@@ -126,7 +132,8 @@
     </div>
     <div class="shlokam-ribbon">
       <p class="shlokam-text">
-        {{ currentLang === 'te' ? '॥ శ్రీ సీతారామచంద్ర పరబ్రహ్మణే నమః • శుభ వివాహ ఆహ్వానం ॥' : '॥ Sri Sita Rama Parabrahmaye Namaha • Auspicious Wedding Invitation ॥' }}
+        {{ currentLang === 'te' ? '॥ శ్రీ సీతారామచంద్ర పరబ్రహ్మణే నమః • శుభ వివాహ ఆహ్వానం ॥' : '॥ Sri Sita Rama
+        Parabrahmaye Namaha • Auspicious Wedding Invitation ॥' }}
       </p>
     </div>
   </header>
@@ -148,12 +155,16 @@
 
     <!-- Hanging Brass Bells & Lamps -->
     <div class="hanging-lamps left" aria-hidden="true">
-      <div class="lamp-drop"><span class="chain"></span><span class="bell">🔔</span><span class="diya"><span class="flame"></span></span></div>
-      <div class="lamp-drop short"><span class="chain"></span><span class="diya"><span class="flame"></span></span></div>
+      <div class="lamp-drop"><span class="chain"></span><span class="bell">🔔</span><span class="diya"><span
+            class="flame"></span></span></div>
+      <div class="lamp-drop short"><span class="chain"></span><span class="diya"><span class="flame"></span></span>
+      </div>
     </div>
     <div class="hanging-lamps right" aria-hidden="true">
-      <div class="lamp-drop short"><span class="chain"></span><span class="diya"><span class="flame"></span></span></div>
-      <div class="lamp-drop"><span class="chain"></span><span class="bell">🔔</span><span class="diya"><span class="flame"></span></span></div>
+      <div class="lamp-drop short"><span class="chain"></span><span class="diya"><span class="flame"></span></span>
+      </div>
+      <div class="lamp-drop"><span class="chain"></span><span class="bell">🔔</span><span class="diya"><span
+            class="flame"></span></span></div>
     </div>
 
     <!-- Soft Faded Banana Trees in the Background for Mandapam Depth -->
@@ -180,7 +191,8 @@
       <!-- Pure Kalyana Ahvana Patrika Heading (NO PARENT NAMES) -->
       <div class="patrika-title-wrap">
         <div class="kalyana-badge">{{ text.wd }}</div>
-        <h1 class="wedding-title">{{ currentLang === 'te' ? 'కళ్యాణ మహోత్సవ ఆహ్వానం' : 'Auspicious Wedding Celebration' }}</h1>
+        <h1 class="wedding-title">{{ currentLang === 'te' ? 'కళ్యాణ మహోత్సవ ఆహ్వానం' : 'Auspicious Wedding Celebration'
+          }}</h1>
         <p class="patrika-sub">
           {{ text.msg }}
         </p>
@@ -259,7 +271,8 @@
           </div>
         </div>
         <div class="exact-muhurtham-detail">
-          <strong>{{ text.muhurthamLabel }}:</strong> {{ currentLang === 'te' ? data.tithiNakshatramTelugu : 'Auspicious Kartika Suddha Ekadasi Dhanus Lagnam' }} — {{ text.muhurthamTimeText }}
+          <strong>{{ text.muhurthamLabel }}:</strong> {{ currentLang === 'te' ? data.tithiNakshatramTelugu : 'Auspicious
+          Kartika Suddha Ekadasi Dhanus Lagnam' }} — {{ text.muhurthamTimeText }}
         </div>
       </div>
 
@@ -289,13 +302,9 @@
 
       <div class="video-theatre-card">
         <div class="video-frame-wrapper">
-          <iframe
-            [src]="videoUrl"
-            title="Pavan Kumar & Divya Wedding Moments"
-            frameborder="0"
+          <iframe [src]="videoUrl" title="Pavan Kumar & Divya Wedding Moments" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            class="couple-youtube-player">
+            allowfullscreen class="couple-youtube-player">
           </iframe>
         </div>
         <div class="video-caption-bar">
@@ -312,7 +321,8 @@
   <section class="section rituals-interactive-section rituals-vertical-journey-section" id="rituals-stage">
     <div class="section-inner">
       <div class="section-header-mandapa">
-        <span class="header-sub">{{ currentLang === 'te' ? 'తెలుగు సంప్రదాయ మహోత్సవ నడక' : 'Sacred Telugu Wedding Traditions' }}</span>
+        <span class="header-sub">{{ currentLang === 'te' ? 'తెలుగు సంప్రదాయ మహోత్సవ నడక' : 'Sacred Telugu Wedding
+          Traditions' }}</span>
         <h2 class="section-main-title">{{ text.stepsTitle }}</h2>
         <div class="ornament-line">✦ 🪔 ✦</div>
         <p class="section-description">
@@ -325,36 +335,27 @@
         <!-- Sinusoidal Background Trail with Floating Petals -->
         <div class="snake-winding-river" aria-hidden="true">
           <svg class="snake-svg-trail" viewBox="0 0 100 1400" preserveAspectRatio="none">
-            <path
-              d="M 50,0 Q 20,100 50,200 T 50,400 T 50,600 T 50,800 T 50,1000 T 50,1200 T 50,1400"
-              fill="none"
-              stroke="#d4a024"
-              stroke-width="5"
-              stroke-dasharray="10 8"
-              class="waving-path-line" />
+            <path d="M 50,0 Q 20,100 50,200 T 50,400 T 50,600 T 50,800 T 50,1000 T 50,1200 T 50,1400" fill="none"
+              stroke="#d4a024" stroke-width="5" stroke-dasharray="10 8" class="waving-path-line" />
           </svg>
         </div>
 
         <!-- SEQUENTIAL STAGE NODES (SNAKE CURVE ALTERNATING LEFT & RIGHT) -->
         <div class="snake-nodes-list">
-          <div
-            *ngFor="let step of journeySteps; let i = index"
-            class="snake-stage-node"
-            [class.left-aligned-step]="i % 2 === 0"
-            [class.right-aligned-step]="i % 2 === 1"
-            [class.active-milestone]="i === activeStep"
-            [class.completed-milestone]="i < activeStep"
-            [class.upcoming-milestone]="i > activeStep"
-            (click)="selectJourneyStep(i)">
+          <div *ngFor="let step of journeySteps; let i = index" class="snake-stage-node"
+            [class.left-aligned-step]="i % 2 === 0" [class.right-aligned-step]="i % 2 === 1"
+            [class.active-milestone]="i === activeStep" [class.completed-milestone]="i < activeStep"
+            [class.upcoming-milestone]="i > activeStep" (click)="selectJourneyStep(i)">
 
             <!-- Sacred Footprints & Diya Hub (Center Anchor) -->
             <div class="snake-hub-anchor" aria-hidden="true">
               <!-- Left footprint -->
               <div class="snake-foot left" [class.step-lit]="i <= activeStep">
                 <svg viewBox="0 0 44 70" class="ornate-footprint-icon">
-                  <path d="M12 25 C10 18, 14 6, 22 6 C30 6, 34 18, 32 25 C30 32, 34 48, 28 62 C24 70, 16 70, 14 62 C10 48, 14 32, 12 25 Z" />
-                  <circle cx="22" cy="36" r="6" fill="#fff" opacity="0.6"/>
-                  <circle cx="22" cy="36" r="3" fill="#85122d"/>
+                  <path
+                    d="M12 25 C10 18, 14 6, 22 6 C30 6, 34 18, 32 25 C30 32, 34 48, 28 62 C24 70, 16 70, 14 62 C10 48, 14 32, 12 25 Z" />
+                  <circle cx="22" cy="36" r="6" fill="#fff" opacity="0.6" />
+                  <circle cx="22" cy="36" r="3" fill="#85122d" />
                   <circle cx="12" cy="10" r="4.2" />
                   <circle cx="18" cy="6" r="4" />
                   <circle cx="24.5" cy="6.5" r="3.6" />
@@ -373,9 +374,10 @@
               <!-- Right footprint -->
               <div class="snake-foot right" [class.step-lit]="i <= activeStep">
                 <svg viewBox="0 0 44 70" class="ornate-footprint-icon mirror">
-                  <path d="M12 25 C10 18, 14 6, 22 6 C30 6, 34 18, 32 25 C30 32, 34 48, 28 62 C24 70, 16 70, 14 62 C10 48, 14 32, 12 25 Z" />
-                  <circle cx="22" cy="36" r="6" fill="#fff" opacity="0.6"/>
-                  <circle cx="22" cy="36" r="3" fill="#85122d"/>
+                  <path
+                    d="M12 25 C10 18, 14 6, 22 6 C30 6, 34 18, 32 25 C30 32, 34 48, 28 62 C24 70, 16 70, 14 62 C10 48, 14 32, 12 25 Z" />
+                  <circle cx="22" cy="36" r="6" fill="#fff" opacity="0.6" />
+                  <circle cx="22" cy="36" r="3" fill="#85122d" />
                   <circle cx="12" cy="10" r="4.2" />
                   <circle cx="18" cy="6" r="4" />
                   <circle cx="24.5" cy="6.5" r="3.6" />
@@ -410,9 +412,11 @@
                 <p class="mini-narrative-desc">{{ getEventDescription(step) }}</p>
 
                 <!-- Venue Map ONLY for Marriage (Subha Muhurtham) & Vindhu -->
-                <div class="mini-venue-box" *ngIf="step.mapUrl && (step.name.includes('Vindhu') || step.name.includes('Marriage') || step.name.includes('Muhurtham'))">
+                <div class="mini-venue-box"
+                  *ngIf="step.mapUrl && (step.name.includes('Vindhu') || step.name.includes('Marriage') || step.name.includes('Muhurtham'))">
                   <div class="venue-pin-title">
-                    📍 <strong>{{ currentLang === 'te' ? (step.teluguVenue || step.venue) : (step.venue || step.teluguVenue) }}</strong>
+                    📍 <strong>{{ currentLang === 'te' ? (step.teluguVenue || step.venue) : (step.venue ||
+                      step.teluguVenue) }}</strong>
                   </div>
                   <a [href]="step.mapUrl" target="_blank" rel="noopener" class="mini-maps-btn">
                     <span>{{ text.viewMapLabel }}</span>
@@ -438,17 +442,11 @@
 
       <!-- DUAL SUBHALEKHA SHOWCASE (GROOM FIRST DEFAULT) -->
       <div class="dual-subhalekha-tabs">
-        <button
-          type="button"
-          class="tab-btn"
-          [class.active]="selectedCardType === 'groom'"
+        <button type="button" class="tab-btn" [class.active]="selectedCardType === 'groom'"
           (click)="switchCardTab('groom')">
           🤵 {{ text.cardSelectGroom }}
         </button>
-        <button
-          type="button"
-          class="tab-btn"
-          [class.active]="selectedCardType === 'bride'"
+        <button type="button" class="tab-btn" [class.active]="selectedCardType === 'bride'"
           (click)="switchCardTab('bride')">
           👰 {{ text.cardSelectBride }}
         </button>
@@ -458,9 +456,13 @@
         <div class="subhalekha-header-strip">
           <span class="seal-icon">📜</span>
           <span class="seal-title">
-            {{ selectedCardType === 'groom' ? (currentLang === 'te' ? 'ఆదిరెడ్డి వారి వివాహ మహోత్సవ ఆహ్వాన శుభపత్రిక (వరుని శుభలేఖ)' : "Aadireddy Family Official Wedding Invitation (Groom's Card)") : (currentLang === 'te' ? 'మొండి వారి కళ్యాణ ఆహ్వాన శుభపత్రిక (వధువు శుభలేఖ)' : "Mondi Family Official Wedding Invitation (Bride's Card)") }}
+            {{ selectedCardType === 'groom' ? (currentLang === 'te' ? 'ఆదిరెడ్డి వారి వివాహ మహోత్సవ ఆహ్వాన శుభపత్రిక
+            (వరుని శుభలేఖ)' : "Aadireddy Family Official Wedding Invitation (Groom's Card)") : (currentLang === 'te' ?
+            'మొండి వారి కళ్యాణ ఆహ్వాన శుభపత్రిక (వధువు శుభలేఖ)' : "Mondi Family Official Wedding Invitation (Bride's
+            Card)") }}
           </span>
-          <button type="button" class="fullview-pill" (click)="toggleInvitationModal(true, selectedCardType)">🔍 {{ currentLang === 'te' ? 'పూర్తి సైజులో చూడండి' : 'View Fullscreen' }}</button>
+          <button type="button" class="fullview-pill" (click)="toggleInvitationModal(true, selectedCardType)">🔍 {{
+            currentLang === 'te' ? 'పూర్తి సైజులో చూడండి' : 'View Fullscreen' }}</button>
         </div>
 
         <div class="subhalekha-img-container" (click)="toggleInvitationModal(true, selectedCardType)">
@@ -469,13 +471,13 @@
             [alt]="selectedCardType === 'groom' ? 'Groom Wedding Card' : 'Bride Wedding Card'"
             class="subhalekha-main-image" />
           <div class="zoom-hover-overlay">
-            <span>🔍 {{ currentLang === 'te' ? 'క్లిక్ చేసి పూర్తి శుభలేఖను పెద్దదిగా చూడండి' : 'Click to view high-resolution invitation' }}</span>
+            <span>🔍 {{ currentLang === 'te' ? 'క్లిక్ చేసి పూర్తి శుభలేఖను పెద్దదిగా చూడండి' : 'Click to view
+              high-resolution invitation' }}</span>
           </div>
         </div>
 
         <div class="subhalekha-download-actions">
-          <a
-            [href]="selectedCardType === 'groom' ? (data.groomInvitationCardImage || data.invitationCardImage) : data.invitationCardImage"
+          <a [href]="selectedCardType === 'groom' ? (data.groomInvitationCardImage || data.invitationCardImage) : data.invitationCardImage"
             [download]="selectedCardType === 'groom' ? 'PavanKumar-Groom-Wedding-Card.jpg' : 'Divya-Bride-Wedding-Card.jpg'"
             class="download-subhalekha-btn">
             📥 {{ currentLang === 'te' ? 'శుభలేఖ పత్రిక డౌన్‌లోడ్ చేసుకోండి' : 'Download Wedding Card' }}
@@ -490,35 +492,46 @@
       <div class="venue-showcase-card mt-30">
         <div class="venue-info-side">
           <div class="venue-item-badge">💒 {{ currentLang === 'te' ? 'కళ్యాణ వేదిక' : 'Wedding Hall' }}</div>
-          <h3 class="hall-title">{{ currentLang === 'te' ? 'శ్రీ ఉమా రామ లింగేశ్వర ఫంక్షన్ హాల్' : 'Sri Uma Rama Lingeshwara Function Hall' }}</h3>
+          <h3 class="hall-title">{{ currentLang === 'te' ? 'శ్రీ ఉమా రామ లింగేశ్వర ఫంక్షన్ హాల్' : 'Sri Uma Rama
+            Lingeshwara Function Hall' }}</h3>
           <p class="hall-address">
-            {{ currentLang === 'te' ? 'రాజమండ్రి, జాం పేట గాంధీ బొమ్మ వీధి' : 'Gandhi Bomma Street, Jampeta, Rajahmundry' }}
+            {{ currentLang === 'te' ? 'రాజమండ్రి, జాం పేట గాంధీ బొమ్మ వీధి' : 'Gandhi Bomma Street, Jampeta,
+            Rajahmundry' }}
           </p>
 
           <div class="feast-box">
-            <div class="feast-heading">🍛 {{ currentLang === 'te' ? 'విందు (Wedding Dinner) :' : 'Wedding Feast Dinner :' }}</div>
-            <p class="feast-time"><strong>{{ currentLang === 'te' ? 'ది. 20-11-2026 శుక్రవారం రాత్రి 7:00 గంటల నుండి' : 'Friday, 20-11-2026 from 07:00 PM onwards' }}</strong> {{ currentLang === 'te' ? 'కళ్యాణ వేదిక నందు.' : 'at the wedding hall.' }}</p>
+            <div class="feast-heading">🍛 {{ currentLang === 'te' ? 'విందు (Wedding Dinner) :' : 'Wedding Feast Dinner
+              :' }}</div>
+            <p class="feast-time"><strong>{{ currentLang === 'te' ? 'ది. 20-11-2026 శుక్రవారం రాత్రి 7:00 గంటల నుండి' :
+                'Friday, 20-11-2026 from 07:00 PM onwards' }}</strong> {{ currentLang === 'te' ? 'కళ్యాణ వేదిక నందు.' :
+              'at the wedding hall.' }}</p>
           </div>
 
           <div class="muhurtham-box">
-            <div class="muhurtham-heading">🪔 {{ currentLang === 'te' ? 'సుముహూర్తము :' : 'Auspicious Muhurtham :' }}</div>
+            <div class="muhurtham-heading">🪔 {{ currentLang === 'te' ? 'సుముహూర్తము :' : 'Auspicious Muhurtham :' }}
+            </div>
             <p class="muhurtham-time">
-              {{ currentLang === 'te' ? 'స్వస్తిశ్రీ చాంద్రమాన శ్రీ పరాభవ నామ సంవత్సర కార్తీక శుద్ధ ఏకాదశి' : 'Sri Parabava Nama Samvatsara Kartika Suddha Ekadasi' }}<br>
-              <strong>{{ currentLang === 'te' ? 'అనగా ది. 20-11-2026 వ తేదీ శుక్రవారం రాత్రి 09:37 ని॥లకు' : 'On Friday Night, 20-11-2026 at 09:37 PM' }}</strong><br>
+              {{ currentLang === 'te' ? 'స్వస్తిశ్రీ చాంద్రమాన శ్రీ పరాభవ నామ సంవత్సర కార్తీక శుద్ధ ఏకాదశి' : 'Sri
+              Parabava Nama Samvatsara Kartika Suddha Ekadasi' }}<br>
+              <strong>{{ currentLang === 'te' ? 'అనగా ది. 20-11-2026 వ తేదీ శుక్రవారం రాత్రి 09:37 ని॥లకు' : 'On Friday
+                Night, 20-11-2026 at 09:37 PM' }}</strong><br>
               {{ currentLang === 'te' ? 'ఉత్తరభద్ర నక్షత్రయుక్త ధనుస్సు లగ్నమునందు.' : 'in Dhanus Lagnam.' }}
             </p>
           </div>
 
           <a [href]="data.mapUrl" target="_blank" rel="noopener" class="mandapa-btn primary-btn full-width">
-            🗺️ {{ currentLang === 'te' ? 'Google Maps లో కళ్యాణ వేదిక రూట్ చూడండి' : 'Open Venue Route in Google Maps' }}
+            🗺️ {{ currentLang === 'te' ? 'Google Maps లో కళ్యాణ వేదిక రూట్ చూడండి' : 'Open Venue Route in Google Maps'
+            }}
           </a>
         </div>
 
         <!-- KALASH FEATURE POSITIONED SAFELY BELOW COMPACTLY -->
         <div class="venue-visual-side down-kalash-container">
-          <img src="assets/wedding/kalash-lamps.png" alt="Auspicious Kalash and Lamps" class="kalash-feature placed-down" />
+          <img src="assets/wedding/kalash-lamps.png" alt="Auspicious Kalash and Lamps"
+            class="kalash-feature placed-down" />
           <div class="kalash-caption">
-            <span>✨ {{ currentLang === 'te' ? 'మంగళ కలశం • దీపారాధన శుభ దీవెనలు' : 'Auspicious Mangala Kalasham & Diyas' }}</span>
+            <span>✨ {{ currentLang === 'te' ? 'మంగళ కలశం • దీపారాధన శుభ దీవెనలు' : 'Auspicious Mangala Kalasham & Diyas'
+              }}</span>
           </div>
         </div>
       </div>
@@ -662,26 +675,31 @@
           <div class="tribute-body">
             <h3>శ్రీ ఆదిరెడ్డి నరసింహం</h3>
             <h3>శ్రీమతి వెంకట గౌరిపార్వతి</h3>
-            <p class="tribute-note">{{ currentLang === 'te' ? 'వరుని తల్లిదండ్రులు (హుకుంపేట, రాజమండ్రి రూరల్)' : "Groom's Parents (Hukumpeta, Rajahmundry Rural)" }}</p>
+            <p class="tribute-note">{{ currentLang === 'te' ? 'వరుని తల్లిదండ్రులు (హుకుంపేట, రాజమండ్రి రూరల్)' :
+              "Groom's Parents (Hukumpeta, Rajahmundry Rural)" }}</p>
             <div class="family-inline-addition">
-              <strong>శ్రీమతి తేజస్విని</strong> - <span>{{ currentLang === 'te' ? 'వరుని ఆత్మీయ కుటుంబం' : "Groom's Loving Family" }}</span>
+              <strong>శ్రీమతి తేజస్విని</strong> - <span>{{ currentLang === 'te' ? 'వరుని ఆత్మీయ కుటుంబం' : "Groom's
+                Loving Family" }}</span>
             </div>
           </div>
         </div>
 
         <!-- SECOND CARD: 🌸 భవదీయులు (వరుని తరపున) -->
         <div class="tribute-card">
-          <div class="tribute-header">🌸 {{ currentLang === 'te' ? 'భవదీయులు (వరుని తరపున)' : "With Best Regards (Groom's Side)" }}</div>
+          <div class="tribute-header">🌸 {{ currentLang === 'te' ? 'భవదీయులు (వరుని తరపున)' : "With Best Regards
+            (Groom's Side)" }}</div>
           <div class="tribute-body">
             <h3>శ్రీ తులసూర్ రఘునాథ్ - శ్రీమతి దుర్గ</h3>
             <h3>శ్రీ తులసూర్ రవి వెంకటకుమార్ - శ్రీమతి తేజస్విని</h3>
-            <p class="tribute-note">{{ currentLang === 'te' ? 'వరుని ఆత్మీయ కుటుంబ సభ్యులు' : "Groom's Beloved Relatives" }}</p>
+            <p class="tribute-note">{{ currentLang === 'te' ? 'వరుని ఆత్మీయ కుటుంబ సభ్యులు' : "Groom's Beloved
+              Relatives" }}</p>
           </div>
         </div>
 
         <!-- THIRD CARD: ✨ భవదీయులు (వధువు తరపున) -->
         <div class="tribute-card">
-          <div class="tribute-header">✨ {{ currentLang === 'te' ? 'భవదీయులు (వధువు తరపున)' : "With Best Regards (Bride's Parents)" }}</div>
+          <div class="tribute-header">✨ {{ currentLang === 'te' ? 'భవదీయులు (వధువు తరపున)' : "With Best Regards (Bride's
+            Parents)" }}</div>
           <div class="tribute-body">
             <h3>శ్రీ మొండి గంగాధర్</h3>
             <h3>శ్రీమతి దుర్గాభవాని</h3>
@@ -693,7 +711,8 @@
       <!-- ==================== WEDDING INFORMATION CONTACT PERSONS & NUMBERS ==================== -->
       <div class="wedding-contacts-directory">
         <h3 class="contacts-directory-title">
-          📞 {{ currentLang === 'te' ? 'వివాహ సమాచారం & సంప్రదించవలసిన వారు' : 'Wedding Information & Contact Persons' }}
+          📞 {{ currentLang === 'te' ? 'వివాహ సమాచారం & సంప్రదించవలసిన వారు' : 'Wedding Information & Contact Persons'
+          }}
         </h3>
 
         <div class="contacts-columns-grid">
@@ -706,7 +725,8 @@
               <li class="contact-entry">
                 <div class="contact-role">
                   <span class="serial">1.</span>
-                  <strong>{{ currentLang === 'te' ? 'పెళ్లి కొడుకు బావ (Pelli koduku bava)' : "Groom's Brother-in-law" }}</strong>
+                  <strong>{{ currentLang === 'te' ? 'పెళ్లి కొడుకు బావ (Pelli koduku bava)' : "Groom's Brother-in-law"
+                    }}</strong>
                 </div>
                 <a href="tel:+918555990680" class="call-dial-link">
                   <span class="phone-ico">📞</span>
@@ -717,7 +737,8 @@
               <li class="contact-entry">
                 <div class="contact-role">
                   <span class="serial">2.</span>
-                  <strong>{{ currentLang === 'te' ? 'పెళ్లి కొడుకు తండ్రి (Pelli koduku father)' : "Groom's Father" }}</strong>
+                  <strong>{{ currentLang === 'te' ? 'పెళ్లి కొడుకు తండ్రి (Pelli koduku father)' : "Groom's Father"
+                    }}</strong>
                 </div>
                 <a href="tel:+919848936848" class="call-dial-link">
                   <span class="phone-ico">📞</span>
@@ -736,7 +757,8 @@
               <li class="contact-entry">
                 <div class="contact-role">
                   <span class="serial">1.</span>
-                  <strong>{{ currentLang === 'te' ? 'పెళ్లి కూతురు మరిది (Pelli kuturu Maridhi)' : "Bride's Brother-in-law (Maridhi)" }}</strong>
+                  <strong>{{ currentLang === 'te' ? 'పెళ్లి కూతురు మరిది (Pelli kuturu Maridhi)' : "Bride's
+                    Brother-in-law (Maridhi)" }}</strong>
                 </div>
                 <a href="tel:+916304436473" class="call-dial-link">
                   <span class="phone-ico">📞</span>
@@ -747,7 +769,8 @@
               <li class="contact-entry">
                 <div class="contact-role">
                   <span class="serial">2.</span>
-                  <strong>{{ currentLang === 'te' ? 'పెళ్లి కూతురు తమ్ముడు (Pelli kuturu tammudu)' : "Bride's Brother (Tammudu)" }}</strong>
+                  <strong>{{ currentLang === 'te' ? 'పెళ్లి కూతురు తమ్ముడు (Pelli kuturu tammudu)' : "Bride's Brother
+                    (Tammudu)" }}</strong>
                 </div>
                 <a href="tel:9121434023" class="call-dial-link">
                   <span class="phone-ico">📞</span>
@@ -759,28 +782,16 @@
         </div>
       </div>
 
-      <!-- Relatives & Well Wishers List -->
-      <div class="relatives-honor-box">
-        <h4 class="honor-title">{{ currentLang === 'te' ? 'బంధుమిత్రుల అభినందనలతో :' : 'With Compliments from Relatives & Friends :' }}</h4>
-        <div class="relatives-names">
-          <span>శ్రీ ఆదిరెడ్డి రామకృష్ణారావు - శ్రీమతి లక్ష్మి</span> •
-          <span>శ్రీ ఈర్ల శ్రీను - శ్రీమతి మణి</span> •
-          <span>శ్రీ మొండి సతీష్ - శ్రీమతి శాంతి</span> •
-          <span>శ్రీ ఆదిరెడ్డి కమల్ కుమార్ - శ్రీమతి మున్ని</span> •
-          <span>శ్రీ ఆదిరెడ్డి ఉదయ్ కిరణ్ కుమార్ - శ్రీమతి సంధ్య</span> •
-          <span>శ్రీ సింగంపల్లి అప్పారావు - శ్రీమతి అప్పాయమ్మ (లేటు)</span> •
-          <span>ఆదిరెడ్డి బ్రదర్స్ & సన్స్ మరియు మొండి బ్రదర్స్</span>
-        </div>
-      </div>
-
       <!-- Brother & In-law Invitations -->
       <div class="brother-love-card">
         <div class="peacock-icon">🦚</div>
         <p class="brother-words">
-          {{ currentLang === 'te' ? '"మా అక్క-బావల మరియు బావమరిది పెళ్ళికి మీరంతా తప్పక వస్తారని ఆశిస్తూ..."' : '"Cordially awaiting your gracious presence and blessings at the wedding of our dear brother and sister..."' }}
+          {{ currentLang === 'te' ? '"మా అక్క-బావల పెళ్ళికి మీరంతా తప్పక వస్తారని ఆశిస్తూ..."' :
+          '"Cordially awaiting your gracious presence and blessings at the wedding of our dear brother and sister..."'
+          }}
         </p>
         <span class="brother-signature">
-          {{ currentLang === 'te' ? 'మీ... లోకేష్ మరియు తులసూర్ రవి వెంకట కుమార్ & తేజస్విని' : '— Lokesh & Tulasoor Ravi Venkata Kumar & Tejaswini' }}
+          {{ currentLang === 'te' ? 'మీ... లోకేష్' : '— Lokesh' }}
         </span>
       </div>
     </div>
@@ -796,10 +807,13 @@
       </div>
       <h3 class="blessing-title">{{ currentLang === 'te' ? 'అభిలాష' : 'Cordial Wishes' }}</h3>
       <p class="blessing-para">
-        {{ currentLang === 'te' ? 'చిరునవ్వులు మూటగట్టి... అక్షింతలు చేతబట్టి... కళ్యాణ వేదిక చుట్టుముట్టి... నిండైన చల్లని మనస్సుతో నూతన వధూవరులను ఆశీర్వదించ కోరుచున్నాము.' : 'With joyful hearts and sacred blessings, we look forward to your presence to grace the wedding mandapam and bless the couple.' }}
+        {{ currentLang === 'te' ? 'చిరునవ్వులు మూటగట్టి... అక్షింతలు చేతబట్టి... కళ్యాణ వేదిక చుట్టుముట్టి... నిండైన
+        చల్లని మనస్సుతో నూతన వధూవరులను ఆశీర్వదించ కోరుచున్నాము.' : 'With joyful hearts and sacred blessings, we look
+        forward to your presence to grace the wedding mandapam and bless the couple.' }}
       </p>
       <div class="namaste-tag">
-        {{ currentLang === 'te' ? 'సదా మీ రాకను కోరుతూ — ఆదిరెడ్డి & మొండి కుటుంబాలు' : 'Awaiting your gracious presence — Aadireddy & Mondi Families' }}
+        {{ currentLang === 'te' ? 'సదా మీ రాకను కోరుతూ — ఆదిరెడ్డి & మొండి కుటుంబాలు' : 'Awaiting your gracious presence
+        — Aadireddy & Mondi Families' }}
       </div>
     </div>
   </section>
@@ -807,14 +821,16 @@
   <!-- ==================== SINGLE LINE FOOTER ==================== -->
   <footer class="single-line-creator-footer">
     <p class="single-line-contact-text">
-      To know me and contact for wedding websites: <strong>Ganapathi Pavan Kumar, Lokesh</strong> • 📞 <a href="tel:8143757999">8143757999</a> • ✉️ <a href="mailto:gana.kpk&#64;gmail.com">gana.kpk&#64;gmail.com</a>
+      To know me and contact for wedding websites: <strong>Ganapathi Pavan Kumar, Lokesh</strong> • 📞 <a
+        href="tel:8143757999">8143757999</a> • ✉️ <a href="mailto:gana.kpk&#64;gmail.com">gana.kpk&#64;gmail.com</a>
     </p>
   </footer>
 
   <!-- Sticky Quick Bar for Mobile Users (CLEAN: ONLY VENUE LOCATION MAP BUTTON RETAINED) -->
   <div class="sticky-action-bar">
     <a [href]="data.mapUrl" target="_blank" rel="noopener" class="bar-link maps-link full-width-action">
-      📍 {{ currentLang === 'te' ? 'కళ్యాణ వేదిక గూగుల్ మ్యాప్స్ లొకేషన్ (Wedding Venue Map)' : 'Open Wedding Venue Route in Google Maps' }}
+      📍 {{ currentLang === 'te' ? 'కళ్యాణ వేదిక గూగుల్ మ్యాప్స్ లొకేషన్ (Wedding Venue Map)' : 'Open Wedding Venue
+      Route in Google Maps' }}
     </a>
   </div>
 
@@ -823,22 +839,17 @@
     <div class="invitation-modal-box" (click)="$event.stopPropagation()">
       <div class="modal-top-bar">
         <div class="modal-card-selector">
-          <button
-            type="button"
-            class="modal-tab-pill"
-            [class.active]="selectedCardType === 'groom'"
+          <button type="button" class="modal-tab-pill" [class.active]="selectedCardType === 'groom'"
             (click)="switchCardTab('groom')">
             🤵 {{ text.cardSelectGroom }}
           </button>
-          <button
-            type="button"
-            class="modal-tab-pill"
-            [class.active]="selectedCardType === 'bride'"
+          <button type="button" class="modal-tab-pill" [class.active]="selectedCardType === 'bride'"
             (click)="switchCardTab('bride')">
             👰 {{ text.cardSelectBride }}
           </button>
         </div>
-        <button type="button" class="close-modal-btn" (click)="toggleInvitationModal(false)">✕ {{ currentLang === 'te' ? 'మూసివేయి' : 'Close' }}</button>
+        <button type="button" class="close-modal-btn" (click)="toggleInvitationModal(false)">✕ {{ currentLang === 'te' ?
+          'మూసివేయి' : 'Close' }}</button>
       </div>
 
       <div class="modal-card-wrapper">
@@ -849,11 +860,11 @@
       </div>
 
       <div class="modal-footer-action">
-        <a
-          [href]="selectedCardType === 'groom' ? (data.groomInvitationCardImage || data.invitationCardImage) : data.invitationCardImage"
+        <a [href]="selectedCardType === 'groom' ? (data.groomInvitationCardImage || data.invitationCardImage) : data.invitationCardImage"
           [download]="selectedCardType === 'groom' ? 'PavanKumar-Groom-Wedding-Card.jpg' : 'Divya-Bride-Wedding-Card.jpg'"
           class="download-card-btn">
-          📥 {{ selectedCardType === 'groom' ? (currentLang === 'te' ? 'వరుని ఆహ్వాన పత్రిక డౌన్‌లోడ్' : 'Download Groom Card') : (currentLang === 'te' ? 'వధువు ఆహ్వాన పత్రిక డౌన్‌లోడ్' : 'Download Bride Card') }}
+          📥 {{ selectedCardType === 'groom' ? (currentLang === 'te' ? 'వరుని ఆహ్వాన పత్రిక డౌన్‌లోడ్' : 'Download Groom
+          Card') : (currentLang === 'te' ? 'వధువు ఆహ్వాన పత్రిక డౌన్‌లోడ్' : 'Download Bride Card') }}
         </a>
       </div>
     </div>

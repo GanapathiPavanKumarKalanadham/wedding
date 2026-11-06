@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WeddingData, WeddingEvent, WeddingLanguage, WeddingTheme } from '../models/wedding-data.model';
 
-const STORAGE_KEY = 'vivaha-vedika-angular-data-v7';
+const STORAGE_KEY = 'vivaha-vedika-angular-data-v8';
 
 const DEFAULT_DATA: WeddingData = {
   theme: 'lak',
@@ -29,8 +29,8 @@ const DEFAULT_DATA: WeddingData = {
   mapUrl: 'https://maps.app.goo.gl/qrjV9x88hjcjeF4B7?g_st=ic',
   message: 'పచ్చని పందిరిలో ముత్యాల తలంబ్రాలు - వేదమంత్రాల నడుమ ఒకటవుతున్న మా చిరంజీవులను మీ పవిత్రమైన దీవెనలతో ఆశీర్వదిస్తారని ఆకాంక్షిస్తూ...',
   coverImage: 'assets/wedding/couple-telephone.jpg',
-  brideImage: 'assets/wedding/bride-profile.jpg',
-  groomImage: 'assets/wedding/groom-profile.jpg',
+  brideImage: 'assets/wedding/bride-profile-cropped.jpg',
+  groomImage: 'assets/wedding/groom-profile-cropped.jpg',
   invitationCardImage: 'assets/wedding/invitation-card.jpg',
   groomInvitationCardImage: 'assets/wedding/groom-invitation-card.jpg',
   driveLink: '',
