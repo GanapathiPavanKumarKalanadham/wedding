@@ -128,7 +128,7 @@ const EN_EVENT_DESCRIPTIONS: Record<string, { name: string; desc: string; time: 
   'Haldi Function': {
     name: 'Haldi Celebration',
     desc: 'Vibrant turmeric celebration filled with music, dance, joyous moments with cousins and family members.',
-    time: 'Morning 09:00 AM'
+    time: 'Morning 04:30 PM'
   },
   'Sangeeth': {
     name: 'Sangeeth & Musical Evening',
